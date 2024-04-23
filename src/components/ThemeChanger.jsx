@@ -102,7 +102,7 @@ const ThemeChanger = () => {
           key={option.name}
           className={`flex justify-center space-x-2 items-center w-10 h-10 leading-9 text-[28px] rounded-full ${
             theme === option.name &&
-            "text-primary dark:text-slate-100 bg-light dark:bg-dark"
+            "text-primary bg-light dark:bg-dark"
           } m-2`}
         >
           <ion-icon name={option.icon}></ion-icon>

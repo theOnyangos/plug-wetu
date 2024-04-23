@@ -2,32 +2,34 @@ import React, { useState } from "react";
 import ThemeChanger from "../../components/ThemeChanger";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
-import { categories, heroSliderImages } from "../../data/StaticData";
+import {
+  categories,
+  fusionProducts,
+  heroSliderImages,
+} from "../../data/StaticData";
 import CategoryScroll from "../../components/categories/CategoryScroll";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import ImageCarousel from "../../components/utils/ImageCarousel";
-import {
-  BiCartAdd,
-  BiHeart,
-  BiSolidStar,
-  BiSolidStarHalf,
-  BiStar,
-} from "react-icons/bi";
 import BottomDrawer from "../../components/utils/BottomDrawer";
 import { Link } from "react-router-dom";
+import CatalogueComponent from "../../components/products/CatalogueComponent";
+import RecentlyViewedComponent from "../../components/products/RecentlyViewedComponent";
+import Modal from "../../components/utils/Modal";
 
 const Landing = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showModel, setShowModel] = useState(false);
 
-  const handleToggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
+  const toggleShowModel = () => {
+    setShowModel(!showModel);
   };
 
   return (
     <div className="">
       <DynamicHelmet
         title="Plug Wetu - Welcome to the fusion plugs of kenya."
-        description="Plug Wetu is a platform that brings together the best of kenyan fusion ware and design. Get your dream outfit at a cost effective price."
+        description="Plug-wetu is an innovative fusion dealer's application designed to
+              streamline the showcasing process for dealers and enhance the
+              shopping experience for clients."
       />
 
       {/* Navigation component */}
@@ -65,177 +67,11 @@ const Landing = () => {
         </div>
 
         {/* Products */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-5 mt-2">
-          {/* Product Card */}
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-5.webp"
-              className="w-full h-[280px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-              {/* Star Rating */}
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStarHalf className="text-orange-500 dark:text-yellow-500" />
-                  <BiStar className="text-orange-500 dark:text-yellow-500" />
-                </div>
-                <span className="dark:text-gray-500 text-sm">(56)</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-6.webp"
-              className="w-full h-[280px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-              {/* Star Rating */}
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStarHalf className="text-orange-500 dark:text-yellow-500" />
-                  <BiStar className="text-orange-500 dark:text-yellow-500" />
-                </div>
-                <span className="dark:text-gray-500 text-sm">(56)</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-7.webp"
-              className="w-full h-[280px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-              {/* Star Rating */}
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStarHalf className="text-orange-500 dark:text-yellow-500" />
-                  <BiStar className="text-orange-500 dark:text-yellow-500" />
-                </div>
-                <span className="dark:text-gray-500 text-sm">(56)</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-8.webp"
-              className="w-full h-[280px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-              {/* Star Rating */}
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStarHalf className="text-orange-500 dark:text-yellow-500" />
-                  <BiStar className="text-orange-500 dark:text-yellow-500" />
-                </div>
-                <span className="dark:text-gray-500 text-sm">(56)</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-10.webp"
-              className="w-full h-[280px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-              {/* Star Rating */}
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-                  <BiSolidStarHalf className="text-orange-500 dark:text-yellow-500" />
-                  <BiStar className="text-orange-500 dark:text-yellow-500" />
-                </div>
-                <span className="dark:text-gray-500 text-sm">(56)</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <RecentlyViewedComponent />
       </section>
 
       {/* All products */}
-      <section className="container mx-auto mt-5 mb-20">
+      <section className="container mx-auto mt-5 mb-10">
         <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
           <h1 className="text-lg md:text-xl font-semibold text-slate-200">
             Our Catalogue
@@ -251,287 +87,43 @@ const Landing = () => {
         </div>
 
         {/* Products */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-2">
-          {/* Product Card */}
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-1.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
+        <CatalogueComponent catalogueData={fusionProducts} />
+      </section>
 
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
+      {/* APP DESCRIPTION */}
+      <section>
+        <div className="container mx-auto mt-5 mb-20">
+          <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
+            <h1 className="text-lg md:text-xl font-semibold text-slate-200 dark:text-bold">
+              Welcome to the Fusion Dealers of Kenya.
+            </h1>
           </div>
 
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-2.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-3.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-4.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-5.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-6.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-7.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-dark rounded-md flex flex-col shadow-md">
-            {/* Product Image */}
-            <img
-              src="/images/image-8.webp"
-              className="w-full h-[400px] object-cover rounded-t-md"
-              alt=""
-            />
-            <div className="relative p-3">
-              <h1 className="text-lg font-normal mt-2 dark:text-slate-200">
-                Arielle Jeans - Navy Blue Plain
-              </h1>
-              <div className="flex gap-2 items-center">
-                <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                  Ksh 2000
-                </p>
-                <p className="text-md font-semibold text-primary dark:text-slate-200">
-                  Ksh 1500
-                </p>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                {/* Add to cart button */}
-                <button className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                  Add to cart <BiCartAdd />
-                </button>
-                {/* Like button */}
-                <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                  <BiHeart className="text-2xl" />
-                </button>
-              </div>
-            </div>
+          <div className="w-full bg-white dark:bg-dark p-3 md:p-5 rounded-b-md shadow-md">
+            <h3
+              onClick={toggleShowModel}
+              className="site-logo dark:text-slate-100 mb-3"
+            >
+              Plug<span className="text-primary">Wetu</span>
+            </h3>
+            <p className="text-sm md:base dark:text-slate-200">
+              Plug-wetu is an innovative fusion dealer's application designed to
+              streamline the showcasing process for dealers and enhance the
+              shopping experience for clients. <br />
+              <br /> Dealers can effortlessly display their extensive catalog of
+              fusion wares, presenting them to clients for marketing purposes.
+              Through the app, clients gain access to a diverse array of fusion
+              products, enabling them to browse, evaluate, and make informed
+              decisions about potential purchases. <br />
+              <br /> With Plug-wetu, the purchasing journey becomes intuitive
+              and seamless, empowering clients to explore options and engage
+              with dealers with ease
+            </p>
           </div>
         </div>
       </section>
 
-      <section>
-        <button
-          className="bg-black text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center"
-          onClick={handleToggleDrawer}
-        >
-          Toggle Drawer <BiCartAdd />
-        </button>
-        <BottomDrawer isOpen={isDrawerOpen} onClose={handleToggleDrawer}>
-          {/* Content of the drawer */}
-          <h2>Bottom Drawer Content</h2>
-          <p>This is the content of the bottom drawer.</p>
-        </BottomDrawer>
-      </section>
+      {showModel && <Modal onClose={toggleShowModel} />}
 
       <ThemeChanger />
 
