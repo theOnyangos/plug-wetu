@@ -13,7 +13,7 @@ const CategoriesCarousel = ({ items, responsive, deviceType }) => {
     >
       {items.map((category, index) => (
         <div key={index} className="flex flex-col justify-center items-center">
-          <div className="rounded-full md:w-[110px] md:h-[110px] w-[80px] h-[80px] border-dotted border-2 border-dark cursor-pointer hover:border-primary transition ease-in-out delay-150 flex justify-center items-center dark:bg-gray-400 mb-3">
+          <div className="rounded-full md:w-[110px] md:h-[110px] w-[80px] h-[80px] border-dotted border-2 border-dark cursor-pointer hover:border-primary transition ease-in-out delay-150 flex justify-center items-center dark:bg-slate-100 mb-3">
             <img
               src={category.icon}
               className="md:w-[100px] w-[80px] rounded-full"

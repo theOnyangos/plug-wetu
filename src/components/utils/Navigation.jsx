@@ -82,7 +82,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="cursor-pointer">
             <h3 className="site-logo dark:text-slate-100">
-              Plug<span className="text-primary">Wetu</span>
+              Phon<span className="text-primary">Zetu</span>
             </h3>
           </Link>
           {/* Links */}

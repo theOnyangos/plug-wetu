@@ -1,5 +1,5 @@
 import React from "react";
-import { fusionProducts } from "../../data/StaticData";
+import { mobileProducts } from "../../data/StaticData";
 import { BiSolidStar, BiSolidStarHalf, BiStar } from "react-icons/bi";
 import RecentlyViewedProductSkeleton from "./RecentlyViewedProductSkeleton";
 
@@ -21,16 +21,16 @@ const RecentlyViewedComponent = ({ loading }) => {
       )}
 
       {!loading && (
-        <div className="flex md:flex-nowrap gap-5 mt-2 pb-4">
-          {fusionProducts.slice(1, 10).map((recent, index) => (
+        <div className="flex md:flex-nowrap gap-3 md:gap-5 mt-2 pb-4">
+          {mobileProducts.slice(1, 10).map((recent, index) => (
             <div
               key={index}
               className="min-w-56 md:w-80 bg-white dark:bg-dark rounded-md flex flex-col shadow-lg"
             >
               {/* Product Image */}
               <img
-                src={recent.image}
-                className="w-full h-[280px] object-cover rounded-t-md"
+                src={recent.images[0]}
+                className="w-full h-[200px] md:h-[280px] object-cover rounded-t-md"
                 alt={recent.title}
               />
               <div className="relative p-3">
@@ -38,10 +38,10 @@ const RecentlyViewedComponent = ({ loading }) => {
                   {recent.title}
                 </h1>
                 <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                  <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
+                  <p className="text-md leading-tight font-normal text-gray-500 dark:text-gray-400 line-through">
                     {recent.price}
                   </p>
-                  <p className="text-md font-semibold text-primary dark:text-slate-200">
+                  <p className="text-md leading-tight font-semibold text-primary dark:text-slate-200">
                     {recent.discount_price}
                   </p>
                 </div>

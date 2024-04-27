@@ -3,8 +3,8 @@ import ThemeChanger from "../../components/ThemeChanger";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
 import {
-  categories,
-  fusionProducts,
+  mobileCategories,
+  mobileProducts,
   heroSliderImages,
 } from "../../data/StaticData";
 import CategoryScroll from "../../components/categories/CategoryScroll";
@@ -45,23 +45,23 @@ const Landing = () => {
       <Navigation />
 
       {/* CATEGORIES */}
-      <section className="container mx-auto mt-5 border-b dark:border-slate-600 pb-5">
+      <section className="container mx-auto mt-5">
         {/* Categories */}
-        <div className="md:w-[700px] mx-auto">
-          <CategoryScroll categoryData={categories} />
+        <div className="md:w-full mx-auto border-b dark:border-slate-600 py-3 md:p-5 bg-white dark:bg-dark">
+          <CategoryScroll categoryData={mobileCategories} />
         </div>
       </section>
 
       {/* HERO SLIDER */}
       <section className="container mx-auto mt-5">
-        <div className="w-full bg-white md:p-5 dark:bg-dark rounded-md">
+        <div className="w-full ">
           <ImageCarousel images={heroSliderImages} />
         </div>
       </section>
 
       {/* RECENTLY VIEWED PRODUCTS */}
       <section className="container mx-auto mt-5 mb-10">
-        <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
+        <div className="w-full bg-primary p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
           <h1 className="text-lg md:text-xl font-semibold text-slate-200">
             Recently Viewed
           </h1>
@@ -69,7 +69,7 @@ const Landing = () => {
           {/* VIEW ALL BUTTON */}
           <Link
             to={"/all-recently-viewed"}
-            className="text-primary dark:text-primary-light uppercase"
+            className="text-white dark:text-primary-light uppercase"
           >
             View All
           </Link>
@@ -81,7 +81,7 @@ const Landing = () => {
 
       {/* ALL PRODUCTS */}
       <section className="container mx-auto mt-5 mb-10">
-        <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
+        <div className="w-full bg-primary p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
           <h1 className="text-lg md:text-xl font-semibold text-slate-200">
             Our Catalogue
           </h1>
@@ -89,20 +89,20 @@ const Landing = () => {
           {/* View All Button */}
           <Link
             to={"/all-recently-viewed"}
-            className="text-primary dark:text-primary-light uppercase"
+            className="text-white dark:text-primary-light uppercase"
           >
             View All
           </Link>
         </div>
 
         {/* Products */}
-        <CatalogueComponent catalogueData={fusionProducts} loading={loading} />
+        <CatalogueComponent catalogueData={mobileProducts} loading={loading} />
       </section>
 
       {/* APP DESCRIPTION */}
       <section>
         <div className="container mx-auto mt-5 mb-20">
-          <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
+          <div className="w-full bg-primary p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
             <h1 className="text-lg md:text-xl font-semibold text-slate-200 dark:text-bold">
               Welcome to the Fusion Dealers of Kenya.
             </h1>
@@ -113,20 +113,44 @@ const Landing = () => {
               onClick={toggleShowModel}
               className="site-logo dark:text-slate-100 mb-3"
             >
-              Plug<span className="text-primary">Wetu</span>
+              Phon<span className="text-primary">Zetu</span>
             </h3>
             <p className="text-sm md:base dark:text-slate-200">
-              Plug-wetu is an innovative fusion dealer's application designed to
-              streamline the showcasing process for dealers and enhance the
-              shopping experience for clients. <br />
-              <br /> Dealers can effortlessly display their extensive catalog of
-              fusion wares, presenting them to clients for marketing purposes.
-              Through the app, clients gain access to a diverse array of fusion
-              products, enabling them to browse, evaluate, and make informed
-              decisions about potential purchases. <br />
-              <br /> With Plug-wetu, the purchasing journey becomes intuitive
-              and seamless, empowering clients to explore options and engage
-              with dealers with ease
+              Introducing our cutting-edge mobile store application, your
+              one-stop destination for all things mobile in Kenya. Get ready to
+              embark on a seamless journey through a vast array of smartphones,
+              tablets, and accessories, all curated to meet your every need and
+              desire.
+              <br />
+              <br />
+              Explore an extensive catalog featuring the latest releases from
+              renowned brands, alongside budget-friendly options that don't
+              compromise on quality. From sleek flagship devices to reliable
+              budget-friendly models, we have something for everyone.
+              <br />
+              <br />
+              Discover the perfect smartphone tailored to your lifestyle,
+              whether you're a tech enthusiast craving the latest innovations or
+              a practical user seeking durability and functionality. With
+              detailed product descriptions, specifications, and customer
+              reviews, you can make informed decisions with confidence.
+              <br />
+              <br />
+              But we don't stop at just phones. Dive into our collection of
+              accessories, including stylish cases, durable screen protectors,
+              and high-quality headphones, to enhance your mobile experience and
+              express your unique style.
+              <br />
+              <br />
+              With our user-friendly interface and secure payment options,
+              shopping has never been easier or more enjoyable. Browse, compare,
+              and purchase your favorite mobile devices and accessories with
+              just a few taps, all from the comfort of your own home.
+              <br />
+              <br />
+              Experience convenience, reliability, and innovation like never
+              before with our mobile store application. Elevate your mobile
+              experience today!
             </p>
           </div>
         </div>
