@@ -3,7 +3,7 @@ import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { BiSolidXCircle } from "react-icons/bi";
 
-function RightDrawer({ isOpen, onClose, children }) {
+function RightDrawer({ isOpen, onClose, drawerWidth, children }) {
   return (
     <Drawer
       open={isOpen}
@@ -11,7 +11,7 @@ function RightDrawer({ isOpen, onClose, children }) {
       onClose={onClose}
       containerClassName="bg-white dark:bg-dark w-full"
       lockBackgroundScroll={true}
-      //   style={{ height: height ?? "100vh" }}
+      style={{ width: drawerWidth ?? "100vw" }}
     >
       <div className="bg-white dark:bg-dark w-full h-full dark:border-t dark:border-slate-700 text-darken dark:text-slate-100 relative">
         <button onClick={onClose} className="absolute top-5 right-5">

@@ -68,7 +68,7 @@ const Navigation = () => {
     setNavOpen(!isNavOpen);
   };
 
-  const drawerWidth = "80%";
+  const drawerWidth = "100%";
 
   return (
     <motion.div
@@ -134,9 +134,13 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <RightDrawer isOpen={isNavOpen} onClose={handleToggleNav}>
-        <div className="p-3">
-          <h2>Mobile Navigation</h2>
+      <RightDrawer
+        isOpen={isNavOpen}
+        onClose={handleToggleNav}
+        drawerWidth={drawerWidth}
+      >
+        <div className="p-3 border-b border-gray-300">
+          <h2 className="font-bold text-2xl tracking-tighter">Categories</h2>
         </div>
       </RightDrawer>
     </motion.div>

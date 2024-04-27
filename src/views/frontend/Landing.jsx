@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ThemeChanger from "../../components/ThemeChanger";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
@@ -10,21 +10,30 @@ import {
 import CategoryScroll from "../../components/categories/CategoryScroll";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import ImageCarousel from "../../components/utils/ImageCarousel";
-import BottomDrawer from "../../components/utils/BottomDrawer";
 import { Link } from "react-router-dom";
 import CatalogueComponent from "../../components/products/CatalogueComponent";
 import RecentlyViewedComponent from "../../components/products/RecentlyViewedComponent";
 import Modal from "../../components/utils/Modal";
+import ScrollableComponent from "../../components/utils/ScrollableComponent";
 
 const Landing = () => {
   const [showModel, setShowModel] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const toggleShowModel = () => {
     setShowModel(!showModel);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="">
+    <ScrollableComponent>
       <DynamicHelmet
         title="Plug Wetu - Welcome to the fusion plugs of kenya."
         description="Plug-wetu is an innovative fusion dealer's application designed to
@@ -32,10 +41,10 @@ const Landing = () => {
               shopping experience for clients."
       />
 
-      {/* Navigation component */}
+      {/* NAVIGATION MENU */}
       <Navigation />
 
-      {/* Categories Section */}
+      {/* CATEGORIES */}
       <section className="container mx-auto mt-5 border-b dark:border-slate-600 pb-5">
         {/* Categories */}
         <div className="md:w-[700px] mx-auto">
@@ -43,21 +52,21 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Hero Slider */}
+      {/* HERO SLIDER */}
       <section className="container mx-auto mt-5">
         <div className="w-full bg-white md:p-5 dark:bg-dark rounded-md">
           <ImageCarousel images={heroSliderImages} />
         </div>
       </section>
 
-      {/* Recently Viewed products */}
+      {/* RECENTLY VIEWED PRODUCTS */}
       <section className="container mx-auto mt-5 mb-10">
         <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
           <h1 className="text-lg md:text-xl font-semibold text-slate-200">
             Recently Viewed
           </h1>
 
-          {/* View All Button */}
+          {/* VIEW ALL BUTTON */}
           <Link
             to={"/all-recently-viewed"}
             className="text-primary dark:text-primary-light uppercase"
@@ -67,10 +76,10 @@ const Landing = () => {
         </div>
 
         {/* Products */}
-        <RecentlyViewedComponent />
+        <RecentlyViewedComponent loading={loading} />
       </section>
 
-      {/* All products */}
+      {/* ALL PRODUCTS */}
       <section className="container mx-auto mt-5 mb-10">
         <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
           <h1 className="text-lg md:text-xl font-semibold text-slate-200">
@@ -87,7 +96,7 @@ const Landing = () => {
         </div>
 
         {/* Products */}
-        <CatalogueComponent catalogueData={fusionProducts} />
+        <CatalogueComponent catalogueData={fusionProducts} loading={loading} />
       </section>
 
       {/* APP DESCRIPTION */}
@@ -128,7 +137,7 @@ const Landing = () => {
       <ThemeChanger />
 
       <BottomNavBar />
-    </div>
+    </ScrollableComponent>
   );
 };
 

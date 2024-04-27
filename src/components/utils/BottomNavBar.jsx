@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import BottomDrawer from "./BottomDrawer";
-import { BiCartAdd, BiHeart } from "react-icons/bi";
+import { BiCartAdd, BiHeart, BiSearchAlt2 } from "react-icons/bi";
 
 const BottomNavBar = () => {
   const location = useLocation();
@@ -133,8 +133,26 @@ const BottomNavBar = () => {
         isOpen={isSearchDrawerOpen}
         onClose={handleToggleSearchDrawer}
       >
-        <div className="p-3">
-          <h2>Search Area</h2>
+        <div className="p-3 flex justify-between items-center border-b border-gray">
+          {/* Logo */}
+          <Link to="/" className="cursor-pointer">
+            <h3 className="site-logo dark:text-slate-100">
+              Plug<span className="text-primary">Wetu</span>
+            </h3>
+          </Link>
+
+          {/* Action Button */}
+          <div className="flex items-center gap-3"></div>
+        </div>
+
+        {/* Search Input */}
+        <div className="m-3 p-1 rounded-full bg-[#f1f5f9] dark:bg-darkGray dark:text-slate-100 dark:border-slate-500 border border-gray flex gap-1 items-center">
+          <BiSearchAlt2 className="text-gray text-3xl ml-2" />
+          <input
+            type="text"
+            placeholder="Search for any products"
+            className="w-full p-3 font-light bg-[#f1f5f9] dark:bg-darkGray rounded-full dark:text-slate-100 dark:border-slate-500 border-none focus:outline-none"
+          />
         </div>
       </BottomDrawer>
 
@@ -144,8 +162,8 @@ const BottomNavBar = () => {
         onClose={handleToggleCartDrawer}
         height={drawerHeight}
       >
-        <div className="p-3">
-          <h2>Cart Content</h2>
+        <div className="p-3 border-b border-gray-300">
+          <h2 className="font-bold text-2xl tracking-tighter">Cart Content</h2>
         </div>
       </BottomDrawer>
     </div>
