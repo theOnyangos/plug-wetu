@@ -1,4 +1,4 @@
-# KITFT Application
+# Mobile Store Application
 
 Introducing our cutting-edge mobile store application, your one-stop destination for all things mobile in Kenya. Get ready to embark on a seamless journey through a vast array of smartphones, tablets, and accessories, all curated to meet your every need and desire.
 
