@@ -8,7 +8,7 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
 
   function generateProducts() {
     const products = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 10; i++) {
       products.push(<CatalogueProductSkeleton key={i} />);
     }
     return products;
@@ -16,7 +16,7 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
   return (
     <>
       {loading && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-5 mt-2">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-5 mt-2">
           {generateProducts()}
         </div>
       )}
@@ -57,7 +57,7 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
                     Add to cart <BiCartAdd />
                   </button>
                   {/* Like button */}
-                  <button className="text-dark hidden bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
+                  <button className="text-dark hidden md:block bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
                     <BiHeart className="text-2xl" />
                   </button>
                 </div>
