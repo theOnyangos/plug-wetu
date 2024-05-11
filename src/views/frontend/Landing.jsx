@@ -6,11 +6,11 @@ import {
   categories,
   fusionProducts,
   heroSliderImages,
-} from "../../data/StaticData";
+} from "../../data/StaticData.mjs";
 import CategoryScroll from "../../components/categories/CategoryScroll";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import ImageCarousel from "../../components/utils/ImageCarousel";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CatalogueComponent from "../../components/products/CatalogueComponent";
 import RecentlyViewedComponent from "../../components/products/RecentlyViewedComponent";
 import Modal from "../../components/utils/Modal";
@@ -19,6 +19,7 @@ import ScrollableComponent from "../../components/utils/ScrollableComponent";
 const Landing = () => {
   const [showModel, setShowModel] = useState(false);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   const toggleShowModel = () => {
     setShowModel(!showModel);
@@ -103,7 +104,7 @@ const Landing = () => {
       <section>
         <div className="container mx-auto mt-5 mb-20">
           <div className="w-full bg-darken p-3 md:p-5 dark:bg-dark rounded-t-md shadow-md flex justify-between items-center">
-            <h1 className="text-lg md:text-xl font-semibold text-slate-200 dark:text-bold">
+            <h1 className="text-lg md:text-xl leading-none text-slate-200 dark:text-bold">
               Welcome to the Fusion Dealers of Kenya.
             </h1>
           </div>

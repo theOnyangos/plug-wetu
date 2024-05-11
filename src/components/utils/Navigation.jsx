@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
-import UniversalButton from "./UniversalButton";
 import { motion, useAnimation } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  BiBell,
-  BiSolidUser,
-  BiHelpCircle,
-  BiCategoryAlt,
-} from "react-icons/bi";
+import { Link } from "react-router-dom";
+import { BiHelpCircle, BiCategoryAlt } from "react-icons/bi";
 import useThemeStore from "../../store/UseThemeStore";
 import DynamicSearch from "../DynamicSearch";
-import { useLocation } from "react-router-dom";
 import RightDrawer from "./RightDrawer";
 
 const Navigation = () => {
-  const navigate = useNavigate();
-  const history = useLocation();
-
-  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const [darkQuery, setDarkQuery] = useState(false);
+  const [isNavOpen, setNavOpen] = useState(false);
+  const controls = useAnimation();
 
   const navStyle = {
     position: "sticky",
@@ -26,32 +18,16 @@ const Navigation = () => {
     zIndex: 100,
   };
 
-  const controls = useAnimation();
-
   const isDarkMode = useThemeStore(
-    (state) => state.theme === "dark" || state.theme === "system"
+    (state) =>
+      state.theme === "dark" ||
+      (!("theme" in localStorage) && darkQuery.matches)
   );
 
   useEffect(() => {
     controls.start("visible");
+    setDarkQuery(window.matchMedia("(prefers-color-scheme: dark)"));
   }, [controls]);
-
-  useEffect(() => {
-    const handleDarkModeChange = () => {
-      setIsDarkMode(darkQuery.matches);
-    };
-
-    darkQuery.addEventListener("change", handleDarkModeChange);
-
-    return () => {
-      darkQuery.removeEventListener("change", handleDarkModeChange);
-    };
-  }, [darkQuery]);
-
-  useEffect(() => {
-    // Save theme to localStorage
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-  }, [isDarkMode]);
 
   const variants = {
     hidden: { opacity: 0, y: -100 },
@@ -61,8 +37,6 @@ const Navigation = () => {
       transition: { duration: 0.5 },
     },
   };
-
-  const [isNavOpen, setNavOpen] = useState(false);
 
   const handleToggleNav = () => {
     setNavOpen(!isNavOpen);
@@ -83,6 +57,7 @@ const Navigation = () => {
           <Link to="/" className="cursor-pointer">
             <h3 className="site-logo dark:text-slate-100">
               Plug<span className="text-primary">Wetu</span>
+              <img src={""} alt="" />
             </h3>
           </Link>
           {/* Links */}

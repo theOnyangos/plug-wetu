@@ -27,7 +27,7 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
             >
               {/* Product Image */}
               <img
-                src={catalogue.image}
+                src={catalogue.thumbnail}
                 className="w-full h-[400px] object-cover rounded-t-md"
                 alt={catalogue.title}
               />

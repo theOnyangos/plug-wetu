@@ -1,9 +1,12 @@
 import React from "react";
-import { fusionProducts } from "../../data/StaticData";
+import { fusionProducts } from "../../data/StaticData.mjs";
 import { BiSolidStar, BiSolidStarHalf, BiStar } from "react-icons/bi";
 import RecentlyViewedProductSkeleton from "./RecentlyViewedProductSkeleton";
+import { useNavigate } from "react-router-dom";
 
 const RecentlyViewedComponent = ({ loading }) => {
+  const navigate = useNavigate();
+
   function generateProducts() {
     const products = [];
     for (let i = 0; i < 5; i++) {
@@ -29,20 +32,25 @@ const RecentlyViewedComponent = ({ loading }) => {
             >
               {/* Product Image */}
               <img
-                src={recent.image}
-                className="w-full h-[280px] object-cover rounded-t-md"
+                onClick={() => {
+                  navigate(`/product-details/${recent.slug}`, {
+                    state: { recent },
+                  });
+                }}
+                src={recent.thumbnail}
+                className="w-full h-[280px] object-cover rounded-t-md cursor-pointer"
                 alt={recent.title}
               />
               <div className="relative p-3">
                 <h1 className="text-sm md:text-md font-normal dark:text-slate-200">
                   {recent.title}
                 </h1>
-                <div className="flex flex-col md:flex-row md:gap-2 md:items-center">
-                  <p className="text-md font-normal text-gray-500 dark:text-gray-400 line-through">
-                    {recent.price}
+                <div className="flex flex-col md:flex-row md:gap-2 md:items-center mb-2">
+                  <p className="text-xl tracking-tight font-semibold text-primary dark:text-slate-200">
+                    KES {recent.discount_price}
                   </p>
-                  <p className="text-md font-semibold text-primary dark:text-slate-200">
-                    {recent.discount_price}
+                  <p className="text-md leading-none font-normal text-gray-500 dark:text-gray-400 line-through">
+                    KES {recent.price}
                   </p>
                 </div>
                 {/* Star Rating */}

@@ -33,6 +33,7 @@ const BottomNavBar = () => {
   };
 
   const drawerHeight = "80%";
+  const searchDrawerHeight = "100%";
 
   return (
     <div>
@@ -132,6 +133,7 @@ const BottomNavBar = () => {
       <BottomDrawer
         isOpen={isSearchDrawerOpen}
         onClose={handleToggleSearchDrawer}
+        height={searchDrawerHeight}
       >
         <div className="p-3 flex justify-between items-center border-b border-gray">
           {/* Logo */}

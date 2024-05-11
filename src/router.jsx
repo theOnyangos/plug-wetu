@@ -3,7 +3,12 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Admin from "./layouts/Admin";
 import OpenRoutes from "./layouts/OpenRoutes";
 
-import { Login, Landing } from "./views/frontend";
+import {
+  Cart,
+  Login,
+  Landing,
+  ProductDetail,
+} from "./views/frontend/index.mjs";
 import { Dashboard as AdminDashboard } from "./views/admin";
 import { Dashboard as ClientDashboard } from "./views/client";
 import { Dashboard as VendorDashboard } from "./views/vendor";
@@ -20,6 +25,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <Landing />,
       },
+      { path: "/product-details/:slug", element: <ProductDetail /> },
+      { path: "/cart", element: <Cart /> },
       {
         path: "/auth-login",
         element: <Login />,
