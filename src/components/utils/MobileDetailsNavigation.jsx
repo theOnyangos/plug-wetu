@@ -13,6 +13,7 @@ import {
 } from "react-icons/bi";
 import BottomDrawer from "./BottomDrawer";
 import { Link, useLocation } from "react-router-dom";
+import { useCartItems } from "../../store/useCart";
 
 const MobileDetailsNavigation = () => {
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
@@ -21,6 +22,7 @@ const MobileDetailsNavigation = () => {
   const controls = useAnimation();
   const location = useLocation();
   const pathname = location.pathname;
+  const cartItems = useCartItems();
 
   const navStyle = {
     position: "sticky",
@@ -83,7 +85,7 @@ const MobileDetailsNavigation = () => {
               <Link to={`/cart`} className="relative">
                 <BiCart className="text-lg dark:text-slate-200" />
                 <span className="absolute -top-2 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
-                  9
+                  {cartItems.length}
                 </span>
               </Link>
             )}

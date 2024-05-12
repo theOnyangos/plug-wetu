@@ -24,17 +24,30 @@ import toast, { Toaster } from "react-hot-toast";
 import useToastTheme from "../../hooks/useToastTheme";
 import useScreenSize from "../../hooks/useScreenSize.mjs";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
+import { useCart } from "../../store/useCart";
 
 const ProductDetail = () => {
   const [productDetails, setProductDetails] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const { toasterTheme } = useToastTheme();
   const isMobile = useScreenSize();
 
   const location = useLocation();
   const { state } = location;
+
+  const {
+    addToCart,
+    isInCart,
+    updateCartItemQuantity,
+    checkMaxQuantityExceeded,
+  } = useCart();
+
+  const addItemToCart = (item) => {
+    addToCart(item);
+  };
 
   useEffect(() => {
     if (state) {
@@ -73,6 +86,58 @@ const ProductDetail = () => {
     setQuantity(quantity - 1);
   };
 
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      toast.error(
+        "Please select a size for product: " +
+          productDetails.title.toLowerCase(),
+        toasterTheme()
+      );
+      return;
+    }
+
+    if (!selectedColor) {
+      toast.error(
+        "Please select a color for product: " +
+          productDetails.title.toLowerCase(),
+        toasterTheme()
+      );
+      return;
+    }
+
+    const item = {
+      id: productDetails.id,
+      title: productDetails.title,
+      slug: productDetails.slug,
+      price: productDetails.discount_price,
+      discount: productDetails.price,
+      image: productDetails.thumbnail,
+      color: selectedColor,
+      size: selectedSize,
+      maxQuantity: productDetails.maxQuantity,
+      quantity: quantity,
+    };
+
+    if (isInCart(item)) {
+      if (checkMaxQuantityExceeded(item.id, item.maxQuantity)) {
+        toast.error(
+          "You have reached the maximum quantity you can add to cart for this product",
+          toasterTheme()
+        );
+        return;
+      }
+      updateCartItemQuantity(item.id, quantity);
+      toast.success("Item updated in cart", toasterTheme());
+    } else {
+      addItemToCart(item);
+      toast.success("Item added to cart", toasterTheme());
+    }
+  };
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <ScrollableComponent>
       <DynamicHelmet
@@ -91,8 +156,8 @@ const ProductDetail = () => {
         <div className="flex gap-2 my-3 md:my-5">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Home <BiChevronRight className="text-xl inline" />{" "}
-            {productDetails.category} <BiChevronRight className="text-xl inline" />{" "}
-            {productDetails.title}
+            {productDetails.category}{" "}
+            <BiChevronRight className="text-xl inline" /> {productDetails.title}{" "}
           </p>
         </div>
       </section>
@@ -101,7 +166,11 @@ const ProductDetail = () => {
         {/* Product Details */}
         <div className="bg-white dark:bg-dark p-3 md:p-10 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-5 mb-[80px]">
           {/* Image Preview */}
-          <ImageCarousel productDetails={productDetails} />
+          <ImageCarousel
+            productDetails={productDetails}
+            showModal={showModal}
+            toggleModal={toggleModal}
+          />
 
           {/* Product Description */}
           <div className="mt-5">
@@ -229,7 +298,10 @@ const ProductDetail = () => {
                 {/* Add to Cart & Buy Now Buttons */}
                 {!isMobile && (
                   <div className="flex gap-3 items-center">
-                    <button className="btn text-white bg-secondary dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-1/2 py-2 flex justify-center items-center rounded-md">
+                    <button
+                      onClick={handleAddToCart}
+                      className="btn text-white bg-secondary dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-1/2 py-2 flex justify-center items-center rounded-md"
+                    >
                       Add to Cart
                     </button>
 
@@ -292,13 +364,16 @@ const ProductDetail = () => {
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center">
               <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md">
-                <BiHome className="text-lg" />
+                <BiHome className="text-2xl" />
               </button>
               <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md">
-                <BiHeart className="text-lg" />
+                <BiHeart className="text-2xl" />
               </button>
             </div>
-            <button className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-2 flex justify-center items-center rounded-md">
+            <button
+              onClick={handleAddToCart}
+              className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-3 flex justify-center items-center rounded-md"
+            >
               <BiCartAdd className="text-xl mr-2" /> Add to Cart
             </button>
           </div>

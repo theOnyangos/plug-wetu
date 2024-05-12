@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { FaCircleArrowRight, FaCircleArrowLeft } from "react-icons/fa6";
+import Modal from "../utils/Modal";
 
-const ImageCarousel = ({ productDetails }) => {
+const ImageCarousel = ({ productDetails, showModal, toggleModal }) => {
+  const [clickedImage, setClickedImage] = useState(null);
   if (
     !productDetails ||
     !productDetails.images ||
@@ -36,13 +38,29 @@ const ImageCarousel = ({ productDetails }) => {
   };
 
   return (
-    <Slide {...properties}>
-      {productDetails.images.map((image, index) => (
-        <div key={index} className="slide-container">
-          <Image images={image.url} />
-        </div>
-      ))}
-    </Slide>
+    <>
+      <Slide {...properties}>
+        {productDetails.images.map((image, index) => (
+          <div
+            onClick={() => {
+              toggleModal();
+              setClickedImage(image.url);
+            }}
+            key={index}
+            className="slide-container"
+          >
+            <Image images={image.url} />
+          </div>
+        ))}
+      </Slide>
+
+      {/* Image Modal */}
+      {showModal && (
+        <Modal onClose={toggleModal} classes="w-[90%] md:w-[50%]">
+          <img src={clickedImage} alt="Product Image" />
+        </Modal>
+      )}
+    </>
   );
 };
 
