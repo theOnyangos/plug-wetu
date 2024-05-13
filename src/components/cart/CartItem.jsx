@@ -32,14 +32,14 @@ const CartItem = ({ item }) => {
               {truncateDescription(item.title, 50)}
             </h1>
             <p className="text-xs dark:text-slate-200">
-              <span className="text-primary font-semibold">Color:</span>{" "}
+              <span className="text-cyan-500 font-semibold">Color:</span>{" "}
               {item.color}
             </p>
             <p className="text-xs dark:text-slate-200">
-              <span className="text-primary font-semibold">Size:</span>{" "}
+              <span className="text-cyan-500 font-semibold">Size:</span>{" "}
               {item.size}
             </p>
-            <p className="text-xl tracking-tight font-semibold text-primary dark:text-slate-200">
+            <p className="text-xl tracking-tight font-semibold text-cyan-500 dark:text-slate-200">
               KES {item.price}
             </p>
             <p className="text-sm leading-none font-normal text-gray-500 dark:text-gray-400 line-through">

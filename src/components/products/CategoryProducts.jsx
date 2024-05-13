@@ -2,7 +2,7 @@ import React from "react";
 import { BiCartAdd, BiHeart } from "react-icons/bi";
 import CatalogueProductSkeleton from "./CatalogueProductSkeleton";
 
-const CatalogueComponent = ({ catalogueData, loading }) => {
+const CategoryProducts = ({ catalogueData, loading }) => {
   function generateProducts() {
     const products = [];
     for (let i = 0; i < 12; i++) {
@@ -46,7 +46,7 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
 
                 <div className="flex gap-3 items-center">
                   {/* Add to cart button */}
-                  <button className="bg-darken text-white dark:bg-slate-100 dark:text-dark py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
+                  <button className="bg-darken text-white dark:bg-cyan-500 dark:text-slate-100 py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
                     Add to cart <BiCartAdd />
                   </button>
                   {/* Like button */}
@@ -63,4 +63,4 @@ const CatalogueComponent = ({ catalogueData, loading }) => {
   );
 };
 
-export default CatalogueComponent;
+export default CategoryProducts;

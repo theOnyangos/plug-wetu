@@ -4,7 +4,7 @@ import { BiSolidStar, BiSolidStarHalf, BiStar } from "react-icons/bi";
 import RecentlyViewedProductSkeleton from "./RecentlyViewedProductSkeleton";
 import { useNavigate } from "react-router-dom";
 
-const RecentlyViewedComponent = ({ loading }) => {
+const ProductSlideComponent = ({ loading }) => {
   const navigate = useNavigate();
 
   function generateProducts() {
@@ -18,13 +18,13 @@ const RecentlyViewedComponent = ({ loading }) => {
   return (
     <div className="overflow-x-auto whitespace-nowrap">
       {loading && (
-        <div className="flex md:flex-nowrap gap-5 mt-2 pb-4">
+        <div className="flex md:flex-nowrap gap-5 mt-2 pb-4 pl-3 md:pl-0">
           {generateProducts()}
         </div>
       )}
 
       {!loading && (
-        <div className="flex md:flex-nowrap gap-5 mt-2 pb-4">
+        <div className="flex md:flex-nowrap gap-3 md:gap-5 mt-2 pb-4 pl-3 md:pl-0">
           {fusionProducts.slice(1, 10).map((recent, index) => (
             <div
               key={index}
@@ -73,4 +73,4 @@ const RecentlyViewedComponent = ({ loading }) => {
   );
 };
 
-export default RecentlyViewedComponent;
+export default ProductSlideComponent;

@@ -3,5 +3,13 @@ import Login from "./Login";
 import Landing from "./Landing";
 import ProductDetail from "./ProductDetail";
 import ProductRating from "./ProductRating";
+import CategoryProductsPage from "./CategoryProductsPage";
 
-export { Cart, Landing, Login, ProductDetail, ProductRating };
+export {
+  Cart,
+  Landing,
+  Login,
+  ProductDetail,
+  ProductRating,
+  CategoryProductsPage,
+};

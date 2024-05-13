@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import useScreenSize from "../../hooks/useScreenSize.mjs";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import Navigation from "../../components/utils/Navigation";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import RatingOverview from "../../components/rating/RatingOverview";
 import ReviewsComponent from "../../components/rating/ReviewsComponent";
 import ThemeChanger from "../../components/ThemeChanger";
-import { BiCommentAdd, BiSolidCommentAdd } from "react-icons/bi";
-import EmptyRating from "../../components/utils/EmptyRating";
 import BottomDrawer from "../../components/utils/BottomDrawer";
 import CreateRating from "../../components/rating/CreateRating";
+import DynamicHelmet from "../../components/DynamicHelmet";
 
 const ProductRating = () => {
   const isMobile = useScreenSize();
@@ -24,6 +23,11 @@ const ProductRating = () => {
 
   return (
     <div className="pb-20">
+      <DynamicHelmet
+        title="Plug Wetu - Category Products."
+        description="Plug-wetu is an innovative fusion dealer's application designed to streamline the showcasing process for dealers and enhance the shopping experience for clients."
+      />
+
       {/* Navigation */}
       {isMobile ? (
         <MobileDetailsNavigation title={state.details.title} />

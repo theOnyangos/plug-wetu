@@ -1,4 +1,3 @@
-import EmptySearch from "./EmptySearch";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import {
@@ -8,17 +7,18 @@ import {
   BiSearchAlt,
   BiArrowBack,
   BiUserCircle,
-  BiSearchAlt2,
   BiHelpCircle,
   BiDotsHorizontalRounded,
 } from "react-icons/bi";
 import BottomDrawer from "./BottomDrawer";
 import { Link, useLocation } from "react-router-dom";
 import { useCartItems } from "../../store/useCart";
+import Search from "./Search";
 
 const MobileDetailsNavigation = ({ title }) => {
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
-  const [isRating, setIsRatting] = useState(false);
+  const [isRating, setIsRating] = useState(false);
+  const [isCategory, setIsCategory] = useState(false);
   const [showDropDown, setShowDropdown] = useState(false);
   const searchDrawerHeight = "100%";
   const controls = useAnimation();
@@ -34,11 +34,14 @@ const MobileDetailsNavigation = ({ title }) => {
 
   useEffect(() => {
     controls.start("visible");
-    console.log(pathname);
 
     const pathSegments = pathname.split("/");
     if (pathSegments.includes("product-rating")) {
-      setIsRatting(true);
+      setIsRating(true);
+    }
+
+    if (pathSegments.includes("category-products")) {
+      setIsCategory(true);
     }
   }, [controls]);
 
@@ -91,7 +94,7 @@ const MobileDetailsNavigation = ({ title }) => {
             )}
 
             {/* Cart Icon */}
-            {pathname !== "/cart" && !isRating && (
+            {pathname !== "/cart" && !isRating && !isCategory && (
               <Link to={`/cart`} className="relative">
                 <BiCart className="text-2xl dark:text-slate-200" />
                 <span className="absolute -top-1 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
@@ -156,7 +159,7 @@ const MobileDetailsNavigation = ({ title }) => {
         onClose={handleToggleSearchDrawer}
         height={searchDrawerHeight}
       >
-        <div className="p-3 flex justify-between items-center border-b border-gray">
+        <div className="p-3 flex justify-between items-center border-b dark:border-slate-700">
           {/* Logo */}
           <Link to="/" className="cursor-pointer">
             <h3 className="site-logo dark:text-slate-100 text-2xl">
@@ -168,18 +171,8 @@ const MobileDetailsNavigation = ({ title }) => {
           <div className="flex items-center gap-3"></div>
         </div>
 
-        {/* Search Input */}
-        <div className="m-3 p-1 rounded-full bg-[#f1f5f9] dark:bg-darkGray dark:text-slate-100 dark:border-slate-500 border border-gray flex gap-1 items-center">
-          <BiSearchAlt2 className="text-gray text-3xl ml-2" />
-          <input
-            type="text"
-            placeholder="Search for any products"
-            className="w-full py-2 font-light bg-[#f1f5f9] dark:bg-darkGray rounded-full dark:text-slate-100 dark:border-slate-500 border-none focus:outline-none"
-          />
-        </div>
-
-        {/* Search Results */}
-        <EmptySearch classes={"h-[450px]"} />
+        {/* Action Search */}
+        <Search />
       </BottomDrawer>
     </React.Fragment>
   );

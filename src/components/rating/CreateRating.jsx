@@ -44,7 +44,7 @@ const CreateRating = ({ title, image }) => {
         <div className="w-full mb-3">
           <label
             htmlFor="name"
-            className="text-sm block font-normal text-gray-500 dark:text-gray-400"
+            className="text-sm block font-normal text-dark dark:text-gray-400"
           >
             Your Name
           </label>
@@ -60,7 +60,7 @@ const CreateRating = ({ title, image }) => {
         <div className="w-full">
           <label
             htmlFor="review"
-            className="text-sm block font-normal text-gray-500 dark:text-gray-400"
+            className="text-sm block font-normal text-dark dark:text-gray-400"
           >
             Your Review
           </label>

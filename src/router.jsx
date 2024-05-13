@@ -9,6 +9,7 @@ import {
   Landing,
   ProductDetail,
   ProductRating,
+  CategoryProductsPage,
 } from "./views/frontend/index.mjs";
 import { Dashboard as AdminDashboard } from "./views/admin";
 import { Dashboard as ClientDashboard } from "./views/client";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "/product-details/:slug", element: <ProductDetail /> },
       { path: "/cart", element: <Cart /> },
       { path: "/product-rating/:productId", element: <ProductRating /> },
+      { path: "/category-products/:slug", element: <CategoryProductsPage /> },
       {
         path: "/auth-register",
         element: <Navigate to="/auth-login" />,

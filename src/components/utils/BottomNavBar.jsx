@@ -3,16 +3,11 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import BottomDrawer from "./BottomDrawer";
-import {
-  BiCartAdd,
-  BiHeart,
-  BiSearchAlt2,
-  BiSolidPhoneCall,
-} from "react-icons/bi";
+import { BiSolidPhoneCall } from "react-icons/bi";
 import { useCartItems } from "../../store/useCart";
 import CartItem from "../cart/CartItem";
 import EmptyCart from "../cart/EmptyCart";
-import EmptySearch from "./EmptySearch";
+import Search from "./Search";
 
 const BottomNavBar = () => {
   const location = useLocation();
@@ -24,6 +19,7 @@ const BottomNavBar = () => {
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
   const [isCartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [items, setItems] = useState([]);
+  const [isCategoryPage, setIsCategoryPage] = useState(false);
 
   let deviceType = "desktop";
 
@@ -43,6 +39,11 @@ const BottomNavBar = () => {
 
   useMemo(() => {
     setItems(cartItems);
+
+    const pathSegments = pathname.split("/");
+    if (pathSegments.includes("category-products")) {
+      setIsCategoryPage(true);
+    }
   }, [cartItems]);
 
   const drawerHeight = "80%";
@@ -56,7 +57,7 @@ const BottomNavBar = () => {
         >
           {/* Home Feeds */}
           <Link
-            to="/feeds"
+            to="/"
             className={`${
               pathname === "/" ? "bg-primary text-white" : ""
             } p-3 flex-1`}
@@ -106,23 +107,42 @@ const BottomNavBar = () => {
           </div>
 
           {/* Notifications */}
-          <Link
-            to="/notifications"
-            className={`${
-              pathname === "/notifications" ? "bg-primary text-white" : ""
-            } p-3 flex-1`}
-          >
-            <div className="flex justify-center items-center relative">
-              <ion-icon
-                name="notifications-outline"
-                style={{ fontSize: "35px" }}
-                className="dark:text-slate-100"
-              ></ion-icon>
-              <span className="absolute -top-1 right-1 text-center w-5 h-5 rounded-full bg-red-500 text-sm text-white">
-                0
-              </span>
-            </div>
-          </Link>
+          {!isCategoryPage && (
+            <Link
+              to="/notifications"
+              className={`${
+                pathname === "/notifications" ? "bg-primary text-white" : ""
+              } p-3 flex-1`}
+            >
+              <div className="flex justify-center items-center relative">
+                <ion-icon
+                  name="notifications-outline"
+                  style={{ fontSize: "35px" }}
+                  className="dark:text-slate-100"
+                ></ion-icon>
+                <span className="absolute -top-1 right-1 text-center w-5 h-5 rounded-full bg-red-500 text-sm text-white">
+                  0
+                </span>
+              </div>
+            </Link>
+          )}
+
+          {isCategoryPage && (
+            <Link
+              to="/notifications"
+              className={`${
+                isCategoryPage ? "bg-primary text-white" : ""
+              } p-3 flex-1`}
+            >
+              <div className="flex justify-center items-center">
+                <ion-icon
+                  name="grid-outline"
+                  style={{ fontSize: "35px" }}
+                  className="dark:text-slate-100"
+                ></ion-icon>
+              </div>
+            </Link>
+          )}
 
           {/* Account */}
           <Link
@@ -148,7 +168,7 @@ const BottomNavBar = () => {
         onClose={handleToggleSearchDrawer}
         height={searchDrawerHeight}
       >
-        <div className="p-3 flex justify-between items-center border-b border-gray">
+        <div className="p-3 flex justify-between items-center border-b dark:border-slate-700">
           {/* Logo */}
           <Link to="/" className="cursor-pointer">
             <h3 className="site-logo dark:text-slate-100">
@@ -160,18 +180,8 @@ const BottomNavBar = () => {
           <div className="flex items-center gap-3"></div>
         </div>
 
-        {/* Search Input */}
-        <div className="m-3 p-1 rounded-full bg-[#f1f5f9] dark:bg-darkGray dark:text-slate-100 dark:border-slate-500 border border-gray flex gap-1 items-center">
-          <BiSearchAlt2 className="text-gray text-3xl ml-2" />
-          <input
-            type="text"
-            placeholder="Search for any products"
-            className="w-full p-3 font-light bg-[#f1f5f9] dark:bg-darkGray rounded-full dark:text-slate-100 dark:border-slate-500 border-none focus:outline-none"
-          />
-        </div>
-
-        {/* Search Results */}
-        <EmptySearch classes={"h-[450px]"} />
+        {/* Action Search */}
+        <Search />
       </BottomDrawer>
 
       {/* Cart Drawer */}
@@ -187,22 +197,24 @@ const BottomNavBar = () => {
         </div>
 
         {/* Cart Summary Items */}
-        {items.length > 0 ? (
-          items?.map((item, index) => <CartItem key={index} item={item} />)
-        ) : (
-          <EmptyCart classes={"h-[450px]"} />
-        )}
+        <div className="dark:bg-darken h-full pt-3 overflow-y-scroll pb-32">
+          {items.length > 0 ? (
+            items?.map((item, index) => <CartItem key={index} item={item} />)
+          ) : (
+            <EmptyCart classes={"h-[450px]"} />
+          )}
+        </div>
 
         {/* View cart summary button */}
         {items.length > 0 && (
-          <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-darken p-3 shadow-xl">
+          <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-darken p-3 shadow-xl border-t dark:border-slate-700">
             <div className="flex gap-2 items-center">
               <div className="flex gap-2 items-center">
-                <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-2 rounded-md">
+                <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md">
                   <BiSolidPhoneCall className="text-2xl" />
                 </button>
               </div>
-              <button className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-2 flex justify-center items-center rounded-md">
+              <button className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-3 flex justify-center items-center rounded-md">
                 View Cart Summary
               </button>
             </div>

@@ -3,7 +3,7 @@ import React from "react";
 const EmptySearch = ({ classes }) => {
   return (
     <div
-      className={`w-full bg-white dark:bg-dark rounded-md p-5 mb-3 ${classes} md:h-[700px] flex flex-col justify-center items-center`}
+      className={`w-full bg-white dark:bg-darken rounded-md p-5 mb-3 ${classes} md:h-[700px] flex flex-col justify-center items-center`}
     >
       <div className="">
         <img src={"/images/empty-search.png"} alt="Empty Cart" />

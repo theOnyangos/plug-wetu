@@ -93,6 +93,7 @@ const Cart = () => {
       )}
 
       <ThemeChanger />
+      
       <Toaster />
     </ScrollableComponent>
   );

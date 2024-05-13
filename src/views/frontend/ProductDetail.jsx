@@ -160,7 +160,7 @@ const ProductDetail = () => {
       )}
 
       {/* Breadcrumb */}
-      {!loading && (
+      {loading && (
         <div className="mb-[90px]">
           <section className="container mx-auto">
             <div className="flex gap-2 my-3 md:my-5">
@@ -408,13 +408,13 @@ const ProductDetail = () => {
         </div>
       )}
 
-      {loading && <ProductSkeleton />}
+      {!loading && <ProductSkeleton />}
 
       <Toaster />
 
       {/* Add to cart */}
       {isMobile && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-dark p-3 shadow-lg">
+        <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-dark p-3 shadow-lg border-t dark:border-slate-700">
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center">
               <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md">
