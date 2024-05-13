@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
-import { BiHelpCircle, BiCategoryAlt, BiPhoneCall } from "react-icons/bi";
-import useThemeStore from "../../store/UseThemeStore";
-import DynamicSearch from "../DynamicSearch";
 import RightDrawer from "./RightDrawer";
+import { useEffect, useState } from "react";
+import DynamicSearch from "../DynamicSearch";
 import { useCartItems } from "../../store/useCart";
+import { motion, useAnimation } from "framer-motion";
+import useThemeStore from "../../store/UseThemeStore";
+import { BiHelpCircle, BiCategoryAlt, BiPhoneCall } from "react-icons/bi";
 
 const Navigation = () => {
   const [darkQuery, setDarkQuery] = useState(false);

@@ -13,7 +13,6 @@ import ImageCarousel from "../../components/utils/ImageCarousel";
 import { Link, useLocation } from "react-router-dom";
 import CatalogueComponent from "../../components/products/CatalogueComponent";
 import RecentlyViewedComponent from "../../components/products/RecentlyViewedComponent";
-import Modal from "../../components/utils/Modal";
 import ScrollableComponent from "../../components/utils/ScrollableComponent";
 
 const Landing = () => {
@@ -111,7 +110,6 @@ const Landing = () => {
 
           <div className="w-full bg-white dark:bg-dark p-3 md:p-5 rounded-b-md shadow-md">
             <h3
-              onClick={toggleShowModel}
               className="site-logo dark:text-slate-100 mb-3"
             >
               Plug<span className="text-primary">Wetu</span>
@@ -133,7 +131,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {showModel && <Modal onClose={toggleShowModel} />}
 
       <ThemeChanger />
 

@@ -56,8 +56,8 @@ const ImageCarousel = ({ productDetails, showModal, toggleModal }) => {
 
       {/* Image Modal */}
       {showModal && (
-        <Modal onClose={toggleModal} classes="w-[90%] md:w-[50%]">
-          <img src={clickedImage} alt="Product Image" />
+        <Modal onClose={toggleModal} classes="w-[90%] md:w-[60%] 2xl:w-[30%]">
+          <img src={clickedImage} alt="Product Image" className="" />
         </Modal>
       )}
     </>

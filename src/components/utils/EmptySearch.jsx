@@ -1,5 +1,4 @@
 import React from "react";
-import cartImage from "../../../public/images/empty-search.png";
 
 const EmptySearch = ({ classes }) => {
   return (
@@ -7,7 +6,7 @@ const EmptySearch = ({ classes }) => {
       className={`w-full bg-white dark:bg-dark rounded-md p-5 mb-3 ${classes} md:h-[700px] flex flex-col justify-center items-center`}
     >
       <div className="">
-        <img src={cartImage} alt="Empty Cart" />
+        <img src={"/images/empty-search.png"} alt="Empty Cart" />
       </div>
       <h1 className="text-xl text-primary font-semibold dark:text-slate-200">
         Search is empty

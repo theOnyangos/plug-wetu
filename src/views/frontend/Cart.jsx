@@ -29,7 +29,7 @@ const Cart = () => {
       />
 
       {/* Navigation */}
-      {isMobile ? <MobileDetailsNavigation /> : <Navigation />}
+      {isMobile ? <MobileDetailsNavigation title={"Cart"} /> : <Navigation />}
 
       <section className="pt-3 pb-20">
         <div className="container mx-auto">

@@ -6,7 +6,7 @@ import useToastTheme from "../../hooks/useToastTheme";
 
 const CartItem = ({ item }) => {
   const { truncateDescription } = useTruncate();
-  const { toasterTheme } = useToastTheme();
+  const { showToast } = useToastTheme();
   const [quantity, setQuantity] = useState(1);
   const { removeFromCart, decreaseCartTotal, increaseCartTotal } = useCart();
 
@@ -54,6 +54,7 @@ const CartItem = ({ item }) => {
             <button
               onClick={() => {
                 removeFromCart(item.id);
+                showToast("success", "Item removed from cart.");
               }}
               className="text-red-500 text-sm flex items-center space-x-2"
             >

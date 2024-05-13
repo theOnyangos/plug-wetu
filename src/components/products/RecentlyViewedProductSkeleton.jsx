@@ -1,6 +1,6 @@
 import React from "react";
 import { forEach } from "lodash";
-import BlankImage from "../../../public/images/blank-image.svg";
+import BlankImage from "../../../public/images/empty-image.png";
 
 const RecentlyViewedProductSkeleton = () => {
   return (

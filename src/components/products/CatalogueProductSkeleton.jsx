@@ -1,5 +1,5 @@
 import React from "react";
-import BlankImage from "../../../public/images/blank-image.svg";
+import BlankImage from "../../../public/images/empty-image.png";
 import { BiHeart } from "react-icons/bi";
 
 const CatalogueProductSkeleton = () => {

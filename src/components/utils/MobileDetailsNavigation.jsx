@@ -1,3 +1,4 @@
+import EmptySearch from "./EmptySearch";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import {
@@ -15,8 +16,9 @@ import BottomDrawer from "./BottomDrawer";
 import { Link, useLocation } from "react-router-dom";
 import { useCartItems } from "../../store/useCart";
 
-const MobileDetailsNavigation = () => {
+const MobileDetailsNavigation = ({ title }) => {
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
+  const [isRating, setIsRatting] = useState(false);
   const [showDropDown, setShowDropdown] = useState(false);
   const searchDrawerHeight = "100%";
   const controls = useAnimation();
@@ -32,6 +34,12 @@ const MobileDetailsNavigation = () => {
 
   useEffect(() => {
     controls.start("visible");
+    console.log(pathname);
+
+    const pathSegments = pathname.split("/");
+    if (pathSegments.includes("product-rating")) {
+      setIsRatting(true);
+    }
   }, [controls]);
 
   const variants = {
@@ -59,32 +67,34 @@ const MobileDetailsNavigation = () => {
         <div className="container mx-auto flex justify-between items-center relative">
           {/* Go Back Button */}
           <button onClick={() => window.history.back()} className=" rounded-md">
-            <BiArrowBack className="text-lg dark:text-slate-200" />
+            <BiArrowBack className="text-2xl dark:text-slate-200" />
           </button>
 
           {/* Details Text */}
           {pathname === "/cart" ? (
             <p className="text-base font-normal dark:text-slate-200 tracking-tight">
-              Cart
+              {title}
             </p>
           ) : (
-            <p className="text-base font-normal dark:text-slate-200 tracking-tight">
-              Product Details
+            <p className="text-base font-normal dark:text-slate-200 tracking-tight overflow-hidden">
+              {title}
             </p>
           )}
 
           {/* Call to action buttons */}
           <div className="flex gap-3 items-center">
             {/* Search Icon */}
-            <button onClick={handleToggleSearchDrawer} className="">
-              <BiSearchAlt className="text-lg dark:text-slate-200" />
-            </button>
+            {!isRating && (
+              <button onClick={handleToggleSearchDrawer} className="">
+                <BiSearchAlt className="text-2xl dark:text-slate-200" />
+              </button>
+            )}
 
             {/* Cart Icon */}
-            {pathname !== "/cart" && (
+            {pathname !== "/cart" && !isRating && (
               <Link to={`/cart`} className="relative">
-                <BiCart className="text-lg dark:text-slate-200" />
-                <span className="absolute -top-2 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
+                <BiCart className="text-2xl dark:text-slate-200" />
+                <span className="absolute -top-1 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
                   {cartItems.length}
                 </span>
               </Link>
@@ -92,7 +102,7 @@ const MobileDetailsNavigation = () => {
 
             {/* More Options Button */}
             <button onClick={() => setShowDropdown(true)} className="">
-              <BiDotsHorizontalRounded className="text-lg dark:text-slate-200" />
+              <BiDotsHorizontalRounded className="text-2xl dark:text-slate-200" />
             </button>
 
             {/* Dropdown */}
@@ -167,6 +177,9 @@ const MobileDetailsNavigation = () => {
             className="w-full py-2 font-light bg-[#f1f5f9] dark:bg-darkGray rounded-full dark:text-slate-100 dark:border-slate-500 border-none focus:outline-none"
           />
         </div>
+
+        {/* Search Results */}
+        <EmptySearch classes={"h-[450px]"} />
       </BottomDrawer>
     </React.Fragment>
   );
