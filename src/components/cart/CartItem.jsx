@@ -7,15 +7,14 @@ import useToastTheme from "../../hooks/useToastTheme";
 const CartItem = ({ item }) => {
   const { truncateDescription } = useTruncate();
   const { showToast } = useToastTheme();
-  const [quantity, setQuantity] = useState(1);
   const { removeFromCart, decreaseCartTotal, increaseCartTotal } = useCart();
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    increaseCartTotal(item);
   };
 
   const decreaseQuantity = () => {
-    setQuantity(quantity - 1);
+    decreaseCartTotal(item);
   };
 
   return (
@@ -39,6 +38,10 @@ const CartItem = ({ item }) => {
               <span className="text-cyan-500 font-semibold">Size:</span>{" "}
               {item.size}
             </p>
+            <p className="text-xs dark:text-slate-200">
+              <span className="text-cyan-500 font-semibold">Quantity:</span>{" "}
+              {item.quantity} Items
+            </p>
             <p className="text-xl tracking-tight font-semibold text-cyan-500 dark:text-slate-200">
               KES {item.price}
             </p>
@@ -56,7 +59,7 @@ const CartItem = ({ item }) => {
                 removeFromCart(item.id);
                 showToast("success", "Item removed from cart.");
               }}
-              className="text-red-500 text-sm flex items-center space-x-2"
+              className="text-red-500 text-sm flex bg-red-5 items-center space-x-2"
             >
               <BiSolidTrash className="inline" /> <span>Remove</span>
             </button>
@@ -67,7 +70,7 @@ const CartItem = ({ item }) => {
             <div className="flex justify-between items-center">
               <button
                 onClick={decreaseQuantity}
-                className="btn bg-slate-200 text-primary dark:bg-white dark:text-darken dark:hover:bg-slate-400 hover:bg-secondary hover:text-white w-8 md:w-10 h-8 md:h-10 rounded-md"
+                className="btn bg-slate-200 text-primary dark:bg-white dark:text-darken dark:hover:bg-cyan-500 hover:bg-secondary hover:text-white w-8 md:w-10 h-8 md:h-10 rounded-md"
               >
                 -
               </button>
@@ -76,7 +79,7 @@ const CartItem = ({ item }) => {
               </span>
               <button
                 onClick={increaseQuantity}
-                className="btn bg-slate-200 text-primary dark:bg-white dark:text-darken dark:hover:bg-slate-400 hover:bg-secondary hover:text-white w-8 md:w-10 h-8 md:h-10 rounded-md"
+                className="btn bg-slate-200 text-primary dark:bg-white dark:text-darken dark:hover:bg-cyan-500 hover:bg-secondary hover:text-white w-8 md:w-10 h-8 md:h-10 rounded-md"
               >
                 +
               </button>

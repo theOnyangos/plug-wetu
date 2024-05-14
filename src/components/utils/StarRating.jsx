@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import useThemeStore from "../../store/UseThemeStore";
 
 const StarRating = ({ rating, setRating }) => {
   const [hover, setHover] = useState(null);
   const [showTitle, setShowTitle] = useState("Select your rating");
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const titles = ["Terrible", "Bad", "Average", "Good", "Excellent"];
 
-  const titles = ["Terrible", "Bad", "Average", "Good", "Excellent"]; // Titles corresponding to ratings
+  const isDarkMode = useThemeStore(
+    (state) =>
+      state.theme === "dark" ||
+      (!("theme" in localStorage) && darkQuery.matches)
+  );
+
+  const themeColor = isDarkMode ? "#111827" : "#e4e5e9";
 
   const handleSelected = (e) => {
     setRating(parseInt(e.target.value));
@@ -40,7 +49,7 @@ const StarRating = ({ rating, setRating }) => {
                     setShowTitle("Select your rating");
                   }}
                   color={
-                    currentRating <= (hover || rating) ? "#fecc48" : "#e4e5e9"
+                    currentRating <= (hover || rating) ? "#fecc48" : themeColor
                   }
                 />
               </motion.div>

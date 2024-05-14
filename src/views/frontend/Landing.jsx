@@ -2,18 +2,14 @@ import React, { useEffect, useState } from "react";
 import ThemeChanger from "../../components/ThemeChanger";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
-import {
-  categories,
-  fusionProducts,
-  heroSliderImages,
-} from "../../data/StaticData.mjs";
+import { categories, heroSliderImages } from "../../data/StaticData.mjs";
 import CategoryScroll from "../../components/categories/CategoryScroll";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import ImageCarousel from "../../components/utils/ImageCarousel";
-import { Link, useNavigate } from "react-router-dom";
-import CategoryProducts from "../../components/products/CategoryProducts";
+import { useNavigate } from "react-router-dom";
 import ProductSlideComponent from "../../components/products/ProductSlideComponent";
 import ScrollableComponent from "../../components/utils/ScrollableComponent";
+import ReviewPopup from "../../components/utils/ReviewPopup";
 
 const Landing = () => {
   const [showModel, setShowModel] = useState(false);
@@ -40,10 +36,8 @@ const Landing = () => {
               streamline the showcasing process for dealers and enhance the
               shopping experience for clients."
       />
-
       {/* NAVIGATION MENU */}
       <Navigation />
-
       {/* CATEGORIES */}
       <section className="container mx-auto mt-5">
         {/* Categories */}

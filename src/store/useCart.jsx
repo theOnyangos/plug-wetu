@@ -23,7 +23,6 @@ export const useCart = create(
           );
 
           if (existingItemIndex !== -1) {
-            // Item with the same id, color, and size already exists in the cart
             const updatedCartItems = [...state.cartItems];
             const updatedItem = { ...updatedCartItems[existingItemIndex] };
             const newQuantity = updatedItem.quantity + item.quantity;
@@ -84,14 +83,56 @@ export const useCart = create(
           };
         }),
 
-      decreaseCartTotal: (amount) =>
-        set((state) => ({
-          cartTotal: state.cartTotal - amount,
-        })),
-      increaseCartTotal: (amount) =>
-        set((state) => ({
-          cartTotal: state.cartTotal + amount,
-        })),
+      decreaseCartTotal: (decreaseItem) =>
+        set((state) => {
+          const updatedCartItems = state.cartItems.map((item) => {
+            if (
+              item.id === decreaseItem.id &&
+              item.color == decreaseItem.color &&
+              item.size === decreaseItem.size
+            ) {
+              return item.quantity > 1
+                ? { ...item, quantity: item.quantity - 1 }
+                : item;
+            }
+            return item;
+          });
+
+          const cartTotal = calculateCartTotal(updatedCartItems);
+          const totalQuantity = calculateTotalQuantity(updatedCartItems);
+
+          return {
+            cartItems: updatedCartItems,
+            cartTotal: cartTotal,
+            totalQuantity: totalQuantity,
+          };
+        }),
+      increaseCartTotal: (increaseItem) =>
+        set((state) => {
+          const updatedCartItems = state.cartItems.map((item) => {
+            if (
+              item.id === increaseItem.id &&
+              item.color === increaseItem.color &&
+              item.size === increaseItem.size
+            ) {
+              const newQuantity = item.quantity + 1;
+              const maxQuantity = item.maxQuantity;
+              const quantityToAdd = newQuantity <= maxQuantity ? 1 : 0;
+
+              return { ...item, quantity: item.quantity + quantityToAdd };
+            }
+            return item;
+          });
+
+          const cartTotal = calculateCartTotal(updatedCartItems);
+          const totalQuantity = calculateTotalQuantity(updatedCartItems);
+
+          return {
+            cartItems: updatedCartItems,
+            cartTotal: cartTotal,
+            totalQuantity: totalQuantity,
+          };
+        }),
       isInCart: (item) => {
         const cartItems = get().cartItems;
         return cartItems.some(

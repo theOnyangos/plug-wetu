@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import BottomDrawer from "./BottomDrawer";
 import { BiSolidPhoneCall } from "react-icons/bi";
-import { useCartItems } from "../../store/useCart";
+import { useCartItems, useCart } from "../../store/useCart";
 import CartItem from "../cart/CartItem";
 import EmptyCart from "../cart/EmptyCart";
 import Search from "./Search";
@@ -15,11 +15,13 @@ const BottomNavBar = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const pathname = location.pathname;
+  const navigate = useNavigate();
 
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
   const [isCartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [items, setItems] = useState([]);
   const [isCategoryPage, setIsCategoryPage] = useState(false);
+  const { cartTotal } = useCart();
 
   let deviceType = "desktop";
 
@@ -53,7 +55,7 @@ const BottomNavBar = () => {
     <div>
       {deviceType === "mobile" && (
         <div
-          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800`}
+          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800 z-20`}
         >
           {/* Home Feeds */}
           <Link
@@ -190,7 +192,7 @@ const BottomNavBar = () => {
         onClose={handleToggleCartDrawer}
         height={drawerHeight}
       >
-        <div className="p-3 border-b border-gray-300 dark:border-slate-700">
+        <div className="p-3 border-b border-gray-300 dark:border-slate-700 py-4">
           <h2 className="font-normal text-xl tracking-tighter">
             Cart ({items?.length} items)
           </h2>
@@ -209,19 +211,38 @@ const BottomNavBar = () => {
         {items.length > 0 && (
           <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-darken p-3 shadow-xl border-t dark:border-slate-700">
             <div className="flex gap-2 items-center">
-              <div className="flex gap-2 items-center">
-                <button className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md">
-                  <BiSolidPhoneCall className="text-2xl" />
-                </button>
-              </div>
-              <button className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-3 flex justify-center items-center rounded-md">
-                View Cart Summary
-              </button>
+              <CallButton handleClick={() => {}} />
+              <ViewCartSummaryButton
+                title={"Cart Summary" + " - Ksh " + cartTotal}
+                handleClick={() => navigate("/cart")}
+              />
             </div>
           </div>
         )}
       </BottomDrawer>
     </div>
+  );
+};
+
+const ViewCartSummaryButton = ({ title, handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-3 flex justify-center items-center rounded-md"
+    >
+      {title}
+    </button>
+  );
+};
+
+const CallButton = ({ handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md"
+    >
+      <BiSolidPhoneCall className="text-2xl" />
+    </button>
   );
 };
 

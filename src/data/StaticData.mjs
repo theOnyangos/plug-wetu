@@ -43,6 +43,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Furniture",
     maxQuantity: 1,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Crafted with precision, this dining set seamlessly blends modern and traditional elements.",
     thumbnail: "/images/image-1.webp",
@@ -120,6 +121,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Home Decor",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Add a touch of sophistication to your space with this captivating fusion wall art.",
     thumbnail: "/images/image-2.webp",
@@ -197,6 +199,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Home Decor",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Infuse your living space with contemporary flair using these chic fusion throw pillows.",
     thumbnail: "/images/image-3.webp",
@@ -274,6 +277,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Lighting",
     maxQuantity: 1,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Illuminate your space with elegance using this stunning fusion glass pendant light.",
     thumbnail: "/images/image-4.webp",
@@ -351,6 +355,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Home Decor",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Enhance your floors with the contemporary charm of this modern fusion area rug.",
     thumbnail: "/images/image-5.webp",
@@ -428,6 +433,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Office Supplies",
     maxQuantity: 3,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Illuminate your workspace with sophistication using this sleek fusion desk lamp.",
     thumbnail: "/images/image-6.webp",
@@ -505,6 +511,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Home Decor",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Display your floral arrangements in style with this elegant fusion ceramic vase set.",
     thumbnail: "/images/image-7.webp",
@@ -580,6 +587,7 @@ export const fusionProducts = [
     slug: "fusion-stainless-steel-flatware-set",
     category: "Kitchenware",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     price: 149.99,
     discount_price: 129.99,
     short_description:
@@ -659,6 +667,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Furniture",
     maxQuantity: 1,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Add a contemporary focal point to your living room with this sleek fusion glass coffee table.",
     thumbnail: "/images/image-9.webp",
@@ -736,6 +745,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Kitchenware",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Serve your guests in style with this eco-friendly fusion bamboo serving tray.",
     thumbnail: "/images/image-10.webp",
@@ -813,6 +823,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Kitchenware",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Serve your guests in style with this eco-friendly fusion bamboo serving tray.",
     thumbnail: "/images/image-11.webp",
@@ -890,6 +901,7 @@ export const fusionProducts = [
     discount_price: 129.99,
     category: "Kitchenware",
     maxQuantity: 5,
+    ratingDistribution: { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3 },
     short_description:
       "Serve your guests in style with this eco-friendly fusion bamboo serving tray.",
     thumbnail: "/images/image-12.webp",
@@ -957,5 +969,278 @@ export const fusionProducts = [
     long_description:
       "Impress your guests with our Fusion Bamboo Serving Tray. Crafted from sustainable bamboo, this stylish serving tray features a fusion of natural materials and modern design elements. Whether serving appetizers, drinks, or desserts, its sturdy construction and contemporary aesthetic make it a versatile and eco-friendly addition to your kitchenware collection.",
     created_date: "2024-04-23",
+  },
+];
+
+export const reviews = [
+  {
+    id: 1,
+    productId: 1,
+    name: "John Doe",
+    userId: 123,
+    rating: 5,
+    productName: "Elegant Fusion Dining Set",
+    message: "Great product! I'm very satisfied with my purchase.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-14T08:00:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-14T08:00:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-14T08:00:00Z",
+      },
+    ],
+    datetime: "2024-05-14T08:00:00Z",
+  },
+  {
+    id: 2,
+    productId: 2,
+    name: "Jane Smith",
+    userId: 456,
+    rating: 4,
+    productName: "Contemporary Fusion Wall Art",
+    message: "This product exceeded my expectations. Highly recommended!",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+    ],
+    datetime: "2024-05-13T15:30:00Z",
+  },
+  {
+    id: 3,
+    productId: 3,
+    userId: 789,
+    rating: 1,
+    name: "Mike Johnson",
+    productName: "Chic Fusion Throw Pillow Set",
+    message: "Excellent quality and fast shipping. Will buy again.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-13T15:30:00Z",
+      },
+    ],
+    datetime: "2024-05-12T10:45:00Z",
+  },
+  {
+    id: 4,
+    productId: 4,
+    name: "Emily Brown",
+    userId: 123,
+    rating: 3,
+    productName: "Fusion Glass Pendant Light",
+    message: "The customer service was outstanding. Thank you!",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-12T10:45:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-12T10:45:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-12T10:45:00Z",
+      },
+    ],
+    datetime: "2024-05-11T19:20:00Z",
+  },
+  {
+    id: 5,
+    productId: 5,
+    name: "David Wilson",
+    userId: 456,
+    rating: 2,
+    productName: "Modern Fusion Area Rug",
+    message: "Very easy to use and exactly as described.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-11T19:20:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-11T19:20:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-11T19:20:00Z",
+      },
+    ],
+    datetime: "2024-05-10T14:15:00Z",
+  },
+  {
+    id: 6,
+    productId: 6,
+    name: "Sarah Adams",
+    userId: 789,
+    rating: 4,
+    productName: "Sleek Fusion Desk Lamp",
+    message: "I'm impressed with the product quality. Worth every penny.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-10T14:15:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-10T14:15:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-10T14:15:00Z",
+      },
+    ],
+    datetime: "2024-05-09T09:00:00Z",
+  },
+  {
+    id: 7,
+    productId: 7,
+    name: "Michael Lee",
+    userId: 123,
+    rating: 5,
+    productName: "Fusion Ceramic Vase Set",
+    message: "Quick delivery and well-packaged. Happy with my purchase.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-09T09:00:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-09T09:00:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-09T09:00:00Z",
+      },
+    ],
+    datetime: "2024-05-08T12:30:00Z",
+  },
+  {
+    id: 8,
+    productId: 8,
+    name: "Emma Taylor",
+    userId: 456,
+    rating: 3,
+    productName: "Fusion Stainless Steel Flatware Set",
+    message: "The product arrived earlier than expected. Very pleased!",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-08T12:30:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-08T12:30:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-08T12:30:00Z",
+      },
+    ],
+    datetime: "2024-05-07T17:45:00Z",
+  },
+  {
+    id: 9,
+    productId: 9,
+    name: "Daniel Clark",
+    userId: 789,
+    rating: 4,
+    productName: "Fusion Glass Coffee Table",
+    message: "Impressive customer support. They answered all my questions.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-07T17:45:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-07T17:45:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-07T17:45:00Z",
+      },
+    ],
+    datetime: "2024-05-06T11:10:00Z",
+  },
+  {
+    id: 10,
+    productId: 10,
+    name: "Olivia Martinez",
+    userId: 123,
+    rating: 5,
+    productName: "Fusion Bamboo Serving Tray",
+    message: "Highly recommend this product. It's exactly what I needed.",
+    likes: [
+      {
+        id: 1,
+        userId: 123,
+        datetime: "2024-05-06T11:10:00Z",
+      },
+      {
+        id: 2,
+        userId: 456,
+        datetime: "2024-05-06T11:10:00Z",
+      },
+      {
+        id: 3,
+        userId: 789,
+        datetime: "2024-05-06T11:10:00Z",
+      },
+    ],
+    datetime: "2024-05-05T20:05:00Z",
   },
 ];

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ImageCarousel from "../../components/product/ImageCarousel";
-import ScrollableComponent from "../../components/utils/ScrollableComponent";
 import DynamicHelmet from "../../components/DynamicHelmet";
 import Navigation from "../../components/utils/Navigation";
 import ThemeChanger from "../../components/ThemeChanger";
@@ -25,6 +24,7 @@ import useToastTheme from "../../hooks/useToastTheme";
 import useScreenSize from "../../hooks/useScreenSize.mjs";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import { useCart } from "../../store/useCart";
+import { reviews } from "../../data/StaticData";
 import ProductSkeleton from "../../components/products/ProductSkeleton";
 import RatingOverview from "../../components/rating/RatingOverview";
 import ReviewsComponent from "../../components/rating/ReviewsComponent";
@@ -91,20 +91,22 @@ const ProductDetail = () => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    if (!selectedColor) {
       showToast(
         "error",
-        "Please select a size for the product " +
-          productDetails.title.toLowerCase()
+        'Please select a color for the product: "' +
+          productDetails.title.toLowerCase() +
+          '"'
       );
       return;
     }
 
-    if (!selectedColor) {
+    if (!selectedSize) {
       showToast(
         "error",
-        "Please select a color for the product " +
-          productDetails.title.toLowerCase()
+        'Please select a size for the product: "' +
+          productDetails.title.toLowerCase() +
+          '"'
       );
       return;
     }
@@ -143,7 +145,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <ScrollableComponent>
+    <>
       <DynamicHelmet
         title={`PLUG-WETU - ${productDetails.title}`}
         description={`${productDetails.short_description}`}
@@ -159,9 +161,9 @@ const ProductDetail = () => {
         <Navigation />
       )}
 
-      {/* Breadcrumb */}
-      {loading && (
+      {!loading && (
         <div className="mb-[90px]">
+          {/* Breadcrumb */}
           <section className="container mx-auto">
             <div className="flex gap-2 my-3 md:my-5">
               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -173,7 +175,7 @@ const ProductDetail = () => {
             </div>
           </section>
 
-          <section className="container mx-auto mb-5">
+          <section className="md:container md:mx-auto mb-5">
             {/* Product Details */}
             <div className="bg-white dark:bg-dark p-3 md:p-10 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Image Preview */}
@@ -368,7 +370,7 @@ const ProductDetail = () => {
           </section>
 
           {/* Product Details */}
-          <section className="container mx-auto">
+          <section className="md:container md:mx-auto">
             <div className="bg-white dark:bg-dark p-3 md:p-5 shadow-sm mb-5">
               <h1 className="text-lg md:text-2xl font-normal dark:text-slate-200 mb-3 md:mb-3 tracking-tighter border-b dark:border-slate-700 pb-2">
                 Product Details
@@ -380,7 +382,7 @@ const ProductDetail = () => {
           </section>
 
           {/* Product Reviews Overview */}
-          <section className="container mx-auto">
+          <section className="md:container md:mx-auto">
             <div className="bg-white dark:bg-dark p-3 md:p-5 shadow-sm mb-5">
               <h1 className="text-lg md:text-2xl font-normal dark:text-slate-200 mb-3 md:mb-3 tracking-tighter border-b dark:border-slate-700 pb-2">
                 Reviews Overview
@@ -389,27 +391,31 @@ const ProductDetail = () => {
               {/* Rating Overview */}
               <div className="md:flex md:justify-start">
                 <div className="md:w-[100%]">
-                  <RatingOverview />
+                  <RatingOverview
+                    ratingDistribution={productDetails.ratingDistribution}
+                  />
                 </div>
               </div>
             </div>
           </section>
 
           {/* Review Messages */}
-          <section className="container mx-auto">
+          <section className="md:container md:mx-auto">
             <div className="bg-white dark:bg-dark p-3 md:p-5 shadow-sm mb-5">
               <h1 className="text-lg md:text-2xl font-normal dark:text-slate-200 mb-3 md:mb-3 tracking-tighter border-b dark:border-slate-700 pb-2">
                 Customer Reviews
               </h1>
 
-              <ReviewsComponent details={productDetails} />
+              <ReviewsComponent details={productDetails} reviews={reviews} />
             </div>
           </section>
         </div>
       )}
 
-      {!loading && <ProductSkeleton />}
+      {/* Skeleton loader */}
+      {loading && <ProductSkeleton />}
 
+      {/* Handle Toast Notification */}
       <Toaster />
 
       {/* Add to cart */}
@@ -436,7 +442,7 @@ const ProductDetail = () => {
 
       {/* Theme Changer */}
       <ThemeChanger />
-    </ScrollableComponent>
+    </>
   );
 };
 

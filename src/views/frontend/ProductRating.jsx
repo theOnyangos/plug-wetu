@@ -9,6 +9,7 @@ import ThemeChanger from "../../components/ThemeChanger";
 import BottomDrawer from "../../components/utils/BottomDrawer";
 import CreateRating from "../../components/rating/CreateRating";
 import DynamicHelmet from "../../components/DynamicHelmet";
+import { reviews } from "../../data/StaticData.mjs";
 
 const ProductRating = () => {
   const isMobile = useScreenSize();
@@ -35,25 +36,27 @@ const ProductRating = () => {
         <Navigation />
       )}
 
-      <section className="container mx-auto mt-5">
+      <section className="md:container md:mx-auto mt-5">
         <div className="bg-white dark:bg-dark p-3 md:p-5 shadow-sm mb-5">
           {/* Rating Overview */}
           <div className="md:flex md:justify-start">
             <div className="md:w-[100%]">
-              <RatingOverview />
+              <RatingOverview
+                ratingDistribution={state.details.ratingDistribution}
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Review Messages */}
-      <section className="container mx-auto">
+      <section className="md:container md:mx-auto">
         <div className="bg-white dark:bg-dark p-3 md:p-5 shadow-sm mb-5">
           <h1 className="text-lg md:text-2xl font-normal dark:text-slate-200 mb-3 md:mb-3 tracking-tighter border-b dark:border-slate-700 pb-2">
             Customer Reviews
           </h1>
 
-          <ReviewsComponent details={state.details} />
+          <ReviewsComponent details={state.details} reviews={reviews} />
         </div>
       </section>
 
@@ -92,7 +95,7 @@ const AddReviewButton = ({ title, handleClick }) => {
     <div className="flex-1 flex justify-center items-center pb-2 pt-2">
       <button
         onClick={handleClick}
-        className="btn bg-darken text-slate-100 px-5 py-2 rounded-md dark:bg-slate-100 dark:text-dark hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
+        className="btn bg-darken text-slate-100 px-5 py-3 rounded-md dark:bg-cyan-500 dark:text-slate-100 hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
       >
         {title}
       </button>

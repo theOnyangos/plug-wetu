@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import {
-  BiDislike,
+  BiStar,
   BiLike,
-  BiSolidDislike,
+  BiDislike,
   BiSolidLike,
   BiSolidStar,
+  BiSolidDislike,
 } from "react-icons/bi";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import useToastTheme from "../../hooks/useToastTheme";
+import useTimeAgo from "../../hooks/useTimeAgo.mjs";
 
-const ReviewsComponent = ({ details }) => {
+const ReviewsComponent = ({ details, reviews }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -39,11 +40,11 @@ const ReviewsComponent = ({ details }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="">
       {/* Review Message */}
-      <ReviewItem />
-      <ReviewItem />
-      <ReviewItem />
+      {reviews?.map((review, index) => (
+        <ReviewItem key={index} review={review} />
+      ))}
 
       {/* See all Reviews button */}
       {isReview ? (
@@ -65,12 +66,12 @@ const ReviewsComponent = ({ details }) => {
   );
 };
 
-const ReviewItem = () => {
+const ReviewItem = ({ review }) => {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [likeReview, setLikeReview] = useState(false);
   const [disLikeReview, setDisLikeReview] = useState(false);
-  const { toasterTheme } = useToastTheme();
+  const { timeAgo } = useTimeAgo();
 
   const handleLikeReview = () => {
     // Set the like review to true and dislike review to false
@@ -122,6 +123,25 @@ const ReviewItem = () => {
     });
   };
 
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= review?.rating) {
+        stars.push(
+          <BiSolidStar
+            key={i}
+            className="text-orange-500 dark:text-yellow-500"
+          />
+        );
+      } else {
+        stars.push(
+          <BiStar key={i} className="text-gray-400 dark:text-gray-500" />
+        );
+      }
+    }
+    return stars;
+  };
+
   /**
    * TODO:
    * - Create a function that will handle the dislike review
@@ -131,7 +151,7 @@ const ReviewItem = () => {
    * - Update the UI if the user had liked or disliked a review
    */
   return (
-    <div className="border-b dark:border-slate-700 pb-3">
+    <div className="border-b dark:border-slate-700 pb-3 mb-3">
       <div className="flex justify-between items-start">
         <div className="flex gap-3 items-center mb-3">
           {/* User profile Image */}
@@ -144,13 +164,9 @@ const ReviewItem = () => {
           {/* User Ratings & Verification Badge */}
           <div className="flex flex-col gap-2 md:gap-0 items-start">
             <div className="flex">
-              <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-              <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-              <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-              <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
-              <BiSolidStar className="text-orange-500 dark:text-yellow-500" />
+              {renderStars()}
               <p className="text-xs md:text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">
-                5/5
+                {review.rating} out of 5
               </p>
             </div>
 
@@ -177,21 +193,16 @@ const ReviewItem = () => {
 
       <div className="mb-3">
         <p className="text-sm md:text-base font-normal text-gray-500 dark:text-gray-400">
-          I love this product, it's amazing, elegance with our Contemporary
-          Fusion Wall Art. Each piece is a masterful blend of diverse artistic
-          influences, resulting in a captivating composition that effortlessly
-          enhances any room. Elevate your home decor with this stunning fusion
-          artwork and make a bold statement that reflects your unique sense of
-          style.
+          {review.message}
         </p>
       </div>
 
       <div className="flex gap-2 justify-between items-center">
         <h1 className="text-sm md:text-base font-semibold dark:text-cyan-500">
-          Emmaculate Onyango
+          {review.name}
         </h1>
         <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-          2 days ago
+          {timeAgo(review.datetime)}
         </p>
       </div>
     </div>

@@ -29,7 +29,7 @@ const CreateRating = ({ title, image }) => {
 
       {/* Rating Title */}
       <div className="flex flex-col justify-center items-center my-5">
-        <h1 className="text-xl text-primary font-semibold dark:text-slate-200">
+        <h1 className="text-xl text-primary font-semibold dark:text-cyan-500">
           Please Rate this product!
         </h1>
         <p className="text-gray-500 text-sm dark:text-slate-200">{title}</p>
