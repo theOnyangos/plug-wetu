@@ -1,5 +1,10 @@
 import React from "react";
-import { BiCartAdd, BiHeart } from "react-icons/bi";
+import {
+  BiCartAdd,
+  BiHeart,
+  BiLogoWhatsapp,
+  BiPhoneCall,
+} from "react-icons/bi";
 import CatalogueProductSkeleton from "./CatalogueProductSkeleton";
 
 const CategoryProducts = ({ catalogueData, loading }) => {
@@ -36,23 +41,26 @@ const CategoryProducts = ({ catalogueData, loading }) => {
                   {catalogue.title}
                 </h1>
                 <div className="flex gap-2 items-center">
-                  <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through">
-                    Ksh {catalogue.price}
+                  <p className="text-xl font-semibold text-primary dark:text-slate-200 tracking-tight">
+                    KES {catalogue.discount_price}
                   </p>
-                  <p className="text-md font-semibold text-primary dark:text-slate-200">
-                    Ksh {catalogue.discount_price}
+                  <p className="text-md font-semibold text-gray-500 dark:text-gray-400 line-through tracking-tight">
+                    KES {catalogue.price}
                   </p>
                 </div>
 
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-2 items-center">
                   {/* Add to cart button */}
-                  <button className="bg-darken text-white dark:bg-cyan-500 dark:text-slate-100 py-2 px-5 rounded-md mt-2 flex gap-3 items-center">
-                    Add to cart <BiCartAdd />
-                  </button>
-                  {/* Like button */}
-                  <button className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md">
-                    <BiHeart className="text-2xl" />
-                  </button>
+                  <AddToCartButton title="Add to Cart" />
+
+                  {/* Wishlist button */}
+                  <WishlistButton title="" />
+
+                  {/* Whatsapp Button */}
+                  <WhatsappButton title="" />
+
+                  {/* Call Button */}
+                  <CallButton title="" />
                 </div>
               </div>
             </div>
@@ -60,6 +68,50 @@ const CategoryProducts = ({ catalogueData, loading }) => {
         </div>
       )}
     </>
+  );
+};
+
+const AddToCartButton = ({ title, handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="bg-darken text-sm font-bold text-white dark:bg-cyan-500 dark:text-slate-100 py-2 px-5 rounded-md mt-2 flex gap-3 items-center"
+    >
+      {title} <BiCartAdd className="text-2xl md:hidden" />
+    </button>
+  );
+};
+
+const WishlistButton = ({ title, handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="text-dark bg-gray-300 dark:bg-red-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md"
+    >
+      {title} <BiHeart className="text-2xl" />
+    </button>
+  );
+};
+
+const WhatsappButton = ({ title, handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="text-dark bg-gray-300 dark:bg-green-500 dark:text-slate-100 mt-2 py-2 px-3 rounded-md"
+    >
+      {title} <BiLogoWhatsapp className="text-2xl" />
+    </button>
+  );
+};
+
+const CallButton = ({ title, handleClick }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className="text-dark bg-gray-300 dark:bg-slate-700 dark:text-slate-100 mt-2 py-2 px-3 rounded-md"
+    >
+      {title} <BiPhoneCall className="text-2xl" />
+    </button>
   );
 };
 

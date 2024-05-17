@@ -14,7 +14,7 @@ const ReviewPopup = ({ reviews }) => {
     const timer = setTimeout(() => {
       setIsVisible(true);
       setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-    }, 10000);
+    }, 50000);
 
     const clearTimer = setTimeout(() => {
       setIsVisible(false);
@@ -35,7 +35,7 @@ const ReviewPopup = ({ reviews }) => {
       {isVisible && (
         <motion.div
           className={`fixed ${
-            isMobile ? "bottom-20" : "bottom-20 left-5"
+            isMobile ? "bottom-16" : "bottom-20 left-5"
           } bg-white p-4 border shadow-lg rounded-lg border-slate-300 dark:border-slate-700 dark:bg-dark mx-2 md:max-w-[400px] md:mx-auto md:bottom-5 z-20`}
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}

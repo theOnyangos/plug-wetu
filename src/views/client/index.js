@@ -1,3 +1,4 @@
 import Dashboard from "./Dashboard";
+import Accounts from "./Accounts";
 
-export { Dashboard };
+export { Dashboard, Accounts };

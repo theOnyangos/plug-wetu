@@ -111,9 +111,9 @@ const BottomNavBar = () => {
           {/* Notifications */}
           {!isCategoryPage && (
             <Link
-              to="/notifications"
+              to="/notification"
               className={`${
-                pathname === "/notifications" ? "bg-primary text-white" : ""
+                pathname === "/notification" ? "bg-primary text-white" : ""
               } p-3 flex-1`}
             >
               <div className="flex justify-center items-center relative">

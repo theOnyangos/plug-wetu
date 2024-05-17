@@ -6,6 +6,7 @@ import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigat
 import Navigation from "../../components/utils/Navigation";
 import useScreenSize from "../../hooks/useScreenSize.mjs";
 import BottomNavBar from "../../components/utils/BottomNavBar";
+import Footer from "../../components/utils/Footer";
 
 const CategoryProductsPage = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ const CategoryProductsPage = () => {
         <Navigation />
       )}
 
-      <section className="container mx-auto pb-20">
+      <section className="container mx-auto pb-20 md:pb-10">
         {/* Products */}
         <CategoryProducts catalogueData={fusionProducts} loading={loading} />
       </section>
@@ -37,6 +38,8 @@ const CategoryProductsPage = () => {
       <ThemeChanger />
 
       <BottomNavBar />
+
+      <Footer />
     </>
   );
 };

@@ -35,7 +35,7 @@ export const heroSliderImages = [
 
 export const fusionProducts = [
   {
-    id: 1,
+    id: 1, // Unique ID variation
     user_id: 123,
     title: "Elegant Fusion Dining Set",
     slug: "elegant-fusion-dining-set",

@@ -2,15 +2,26 @@ import React, { useState } from "react";
 import StarRating from "../utils/StarRating";
 import NewMessageInput from "../utils/MessageInput";
 import useToastTheme from "../../hooks/useToastTheme";
+import thumbsUp from "../../assets/lotti-files/thumbs_up.json";
+import AnimationModal from "../../components/utils/AnimationModal";
+import Lottie from "lottie-react";
 
 const CreateRating = ({ title, image }) => {
   const [rating, setRating] = useState(null);
   const [newMessage, setNewMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const { showToast } = useToastTheme();
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleShowModel = () => {
+    setShowModal(!showModal);
+  };
 
   const onSendClick = (e) => {
     e.preventDefault();
+
+    setShowModal(true);
+
     if (newMessage.trim() === "") {
       showToast("error", "Please provide your name and review message.");
       return;
@@ -77,6 +88,29 @@ const CreateRating = ({ title, image }) => {
           />
         </div>
       </form>
+
+      {showModal && (
+        <AnimationModal onClose={toggleShowModel}>
+          <div className="text-center">
+            <Lottie animationData={thumbsUp} />
+              <h1 className="text-xl text-primary font-semibold dark:text-cyan-500 leading-none mb-3">
+                Thank you for your review!
+              </h1>
+              <p className="text-white text-sm dark:text-slate-200 mb-3">
+                Your review has been submitted successfully.
+              </p>
+              {/* Ok Button */}
+              <div className="flex justify-center items-center pb-2 pt-2">
+                <button
+                  onClick={toggleShowModel}
+                  className="btn bg-darken font-bold text-slate-100 px-5 py-3 rounded-md dark:bg-primary dark:text-slate-100 hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
+                >
+                  Ok
+                </button>
+            </div>
+          </div>
+        </AnimationModal>
+      )}
     </div>
   );
 };

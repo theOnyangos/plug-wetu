@@ -19,6 +19,7 @@ const MobileDetailsNavigation = ({ title }) => {
   const [isSearchDrawerOpen, setSearchIsDrawerOpen] = useState(false);
   const [isRating, setIsRating] = useState(false);
   const [isCategory, setIsCategory] = useState(false);
+  const [isNotifications, setIsNotifications] = useState(false);
   const [showDropDown, setShowDropdown] = useState(false);
   const searchDrawerHeight = "100%";
   const controls = useAnimation();
@@ -42,6 +43,10 @@ const MobileDetailsNavigation = ({ title }) => {
 
     if (pathSegments.includes("category-products")) {
       setIsCategory(true);
+    }
+
+    if (pathSegments.includes("notifications")) {
+      setIsNotifications(true);
     }
   }, [controls]);
 
@@ -87,21 +92,24 @@ const MobileDetailsNavigation = ({ title }) => {
           {/* Call to action buttons */}
           <div className="flex gap-3 items-center">
             {/* Search Icon */}
-            {!isRating && (
+            {!isRating && isNotifications && (
               <button onClick={handleToggleSearchDrawer} className="">
                 <BiSearchAlt className="text-2xl dark:text-slate-200" />
               </button>
             )}
 
             {/* Cart Icon */}
-            {pathname !== "/cart" && !isRating && !isCategory && (
-              <Link to={`/cart`} className="relative">
-                <BiCart className="text-2xl dark:text-slate-200" />
-                <span className="absolute -top-1 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
-                  {cartItems.length}
-                </span>
-              </Link>
-            )}
+            {pathname !== "/cart" &&
+              !isRating &&
+              !isCategory &&
+              isNotifications && (
+                <Link to={`/cart`} className="relative">
+                  <BiCart className="text-2xl dark:text-slate-200" />
+                  <span className="absolute -top-1 -right-2 text-center w-4 h-4 rounded-full bg-primary text-xs text-white">
+                    {cartItems.length}
+                  </span>
+                </Link>
+              )}
 
             {/* More Options Button */}
             <button onClick={() => setShowDropdown(true)} className="">

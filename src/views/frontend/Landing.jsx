@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import ProductSlideComponent from "../../components/products/ProductSlideComponent";
 import ScrollableComponent from "../../components/utils/ScrollableComponent";
 import ReviewPopup from "../../components/utils/ReviewPopup";
+import Footer from "../../components/utils/Footer";
 
 const Landing = () => {
   const [showModel, setShowModel] = useState(false);
@@ -216,6 +217,8 @@ const Landing = () => {
       <ThemeChanger />
 
       <BottomNavBar />
+
+      <Footer />
     </ScrollableComponent>
   );
 };

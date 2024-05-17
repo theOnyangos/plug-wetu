@@ -129,7 +129,7 @@ const Navigation = () => {
               </div>
 
               <Link
-                to="/login"
+                to="/auth-login"
                 className="btn bg-secondary hover:text-slate-100 text-slate-100 dark:bg-white dark:text-secondary hover:bg-primary hover:border-secondary py-2 px-8 rounded-[50px] cursor-pointer transition ease-in-out delay-150"
               >
                 <p className="text-[18px] font-normal tracking-tighter">

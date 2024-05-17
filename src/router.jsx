@@ -2,18 +2,19 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import Admin from "./layouts/Admin";
 import OpenRoutes from "./layouts/OpenRoutes";
+import ProtectedRoute from "../src/components/ProtectedRoute";
 
 import {
   Cart,
   Login,
   Landing,
   ProductDetail,
+  Notifications,
   ProductRating,
   CategoryProductsPage,
 } from "./views/frontend/index.mjs";
 import { Dashboard as AdminDashboard } from "./views/admin";
-import { Dashboard as ClientDashboard } from "./views/client";
-import { Dashboard as VendorDashboard } from "./views/vendor";
+import { Accounts, Dashboard as ClientDashboard } from "./views/client";
 
 import NotFound from "./views/NotFound";
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <Navigate to="/auth-login" />,
       },
       {
+        path: "/notification",
+        element: <Notifications />,
+      },
+      {
         path: "/auth-login",
         element: <Login />,
       },
@@ -48,7 +53,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user-dashboard",
-        element: <ClientDashboard to="/user-dashboard" />,
+        element: <ProtectedRoute element={<ClientDashboard />} />,
+      },
+      {
+        path: "/account",
+        element: <ProtectedRoute element={<Accounts />} />,
       },
     ],
   },
@@ -59,18 +68,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin-dashboard",
-        element: <AdminDashboard to="/admin-dashboard" />,
-      },
-    ],
-  },
-  {
-    // ORGANIZERS ROUTES
-    path: "/",
-    element: <Admin />,
-    children: [
-      {
-        path: "/vendor-dashboard",
-        element: <VendorDashboard to="/vendor-dashboard" />,
+        element: <ProtectedRoute element={<AdminDashboard />} />,
       },
     ],
   },
