@@ -55,8 +55,7 @@ const BottomNavBar = () => {
     <div>
       {deviceType === "mobile" && (
         <div
-          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800 z-20`}
-        >
+          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800 z-20`}>
           {/* Home Feeds */}
           <Link
             to="/"

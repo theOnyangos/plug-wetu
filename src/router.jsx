@@ -14,7 +14,13 @@ import {
   CategoryProductsPage,
 } from "./views/frontend/index.mjs";
 import { Dashboard as AdminDashboard } from "./views/admin";
-import { Accounts, Dashboard as ClientDashboard } from "./views/client";
+import {
+  Accounts,
+  Dashboard as ClientDashboard,
+  MyBusiness,
+  MyFavorites,
+  Messages,
+} from "./views/client";
 
 import NotFound from "./views/NotFound";
 
@@ -57,7 +63,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/account",
-        element: <ProtectedRoute element={<Accounts />} />,
+        element: <Accounts />,
+      },
+      {
+        path: "/business",
+        element: <MyBusiness />,
+      },
+      {
+        path: "/favorites",
+        element: <MyFavorites />,
+      },
+      {
+        path: "/messages",
+        element: <Messages />,
       },
     ],
   },
