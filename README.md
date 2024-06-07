@@ -1,4 +1,4 @@
-# KITFT Application
+# Plug Wetu Application
 
 Plug-wetu is an innovative fusion dealer's application designed to streamline the showcasing process for dealers and enhance the shopping experience for clients.
 
