@@ -86,7 +86,7 @@ const ThemeChanger = () => {
       initial="initial"
       animate="animate"
       whileHover={{ boxShadow: "0px 0px 10px 0px #105ffc" }}
-      className={`fixed top-[35%] right-5 md:right-5 text-dark dark:text-slate-200 duration-100 dark:bg-dark bg-white rounded-full shadow-md ${
+      className={`fixed top-[35%] right-3 md:right-5 text-dark dark:text-slate-200 duration-100 dark:bg-dark bg-white rounded-full shadow-md z-50 ${
         isVisible ? "" : "hidden"
       }`}
     >
@@ -100,9 +100,8 @@ const ThemeChanger = () => {
           }}
           onClick={() => setTheme(option.name)}
           key={option.name}
-          className={`flex justify-center space-x-2 items-center w-10 h-10 leading-9 text-[28px] rounded-full ${
-            theme === option.name &&
-            "text-primary bg-light dark:bg-dark"
+          className={`flex justify-center space-x-2 items-center w-8 md:w-10 h-8 md:h-10 leading-9 text-lg md:text-[28px] rounded-full ${
+            theme === option.name && "text-primary bg-light dark:bg-dark"
           } m-2`}
         >
           <ion-icon name={option.icon}></ion-icon>
@@ -113,7 +112,7 @@ const ThemeChanger = () => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         onClick={handleCloseButtonClick}
-        className={`flex justify-center space-x-2 text-dark dark:text-slate-200 items-center dark:slate-100 w-10 h-10 leading-9 text-[28px] rounded-full m-2`}
+        className={`flex justify-center space-x-2 text-dark dark:text-slate-200 items-center dark:slate-100 w-8 md:w-10 h-8 md:h-10 leading-9 text-lg md:text-[28px] rounded-full m-2`}
       >
         <ion-icon name="close"></ion-icon>
       </motion.button>

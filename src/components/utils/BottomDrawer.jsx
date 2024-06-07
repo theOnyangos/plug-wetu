@@ -14,7 +14,10 @@ function BottomDrawer({ isOpen, onClose, height, children }) {
       lockBackgroundScroll={true}
     >
       <div className="bg-white dark:bg-dark w-full h-full dark:border-t dark:border-slate-700 text-darken dark:text-slate-100 relative">
-        <button onClick={onClose} className="absolute top-5 right-5">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-5 h-10 w-10 rounded-3xl bg-darken/50 dark:bg-cyan-500/50 flex items-center justify-center text-slate-100"
+        >
           <BiSolidXCircle className="text-2xl" />
         </button>
         {children}

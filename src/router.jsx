@@ -2,11 +2,25 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import Admin from "./layouts/Admin";
 import OpenRoutes from "./layouts/OpenRoutes";
+import ProtectedRoute from "../src/components/ProtectedRoute";
 
-import { Login, Landing } from "./views/frontend";
+import {
+  Cart,
+  Login,
+  Landing,
+  ProductDetail,
+  Notifications,
+  ProductRating,
+  CategoryProductsPage,
+} from "./views/frontend/index.mjs";
 import { Dashboard as AdminDashboard } from "./views/admin";
-import { Dashboard as ClientDashboard } from "./views/client";
-import { Dashboard as VendorDashboard } from "./views/vendor";
+import {
+  Accounts,
+  Dashboard as ClientDashboard,
+  MyBusiness,
+  MyFavorites,
+  Messages,
+} from "./views/client";
 
 import NotFound from "./views/NotFound";
 
@@ -19,6 +33,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Landing />,
+      },
+      { path: "/product-details/:slug", element: <ProductDetail /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/product-rating/:productId", element: <ProductRating /> },
+      { path: "/category-products/:slug", element: <CategoryProductsPage /> },
+      {
+        path: "/auth-register",
+        element: <Navigate to="/auth-login" />,
+      },
+      {
+        path: "/notification",
+        element: <Notifications />,
       },
       {
         path: "/auth-login",
@@ -33,7 +59,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user-dashboard",
-        element: <ClientDashboard to="/user-dashboard" />,
+        element: <ProtectedRoute element={<ClientDashboard />} />,
+      },
+      {
+        path: "/account",
+        element: <Accounts />,
+      },
+      {
+        path: "/business",
+        element: <MyBusiness />,
+      },
+      {
+        path: "/favorites",
+        element: <MyFavorites />,
+      },
+      {
+        path: "/messages",
+        element: <Messages />,
       },
     ],
   },
@@ -44,18 +86,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin-dashboard",
-        element: <AdminDashboard to="/admin-dashboard" />,
-      },
-    ],
-  },
-  {
-    // ORGANIZERS ROUTES
-    path: "/",
-    element: <Admin />,
-    children: [
-      {
-        path: "/vendor-dashboard",
-        element: <VendorDashboard to="/vendor-dashboard" />,
+        element: <ProtectedRoute element={<AdminDashboard />} />,
       },
     ],
   },
