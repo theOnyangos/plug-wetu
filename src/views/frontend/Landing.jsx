@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ThemeChanger from "../../components/ThemeChanger";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
-import { categories, heroSliderImages } from "../../data/StaticData.mjs";
+import { categories, heroSliderImages } from "../../data/StaticData.js";
 import CategoryScroll from "../../components/categories/CategoryScroll";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import ImageCarousel from "../../components/utils/ImageCarousel";

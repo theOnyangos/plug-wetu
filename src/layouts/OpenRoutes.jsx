@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { reviews } from "../data/StaticData";
 import ReviewPopup from "../components/utils/ReviewPopup";
+import { reviews } from "../data/StaticData";
 
 const OpenRoutes = () => {
   return (

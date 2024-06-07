@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import Navigation from "../../components/utils/Navigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
 import toast, { Toaster } from "react-hot-toast";
@@ -93,12 +93,10 @@ const Cart = () => {
       )}
 
       <ThemeChanger />
-      
+
       <Toaster />
     </ScrollableComponent>
   );
 };
-
-
 
 export default Cart;

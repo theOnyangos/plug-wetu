@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StarRating from "../utils/StarRating";
 import NewMessageInput from "../utils/MessageInput";
-import useToastTheme from "../../hooks/useToastTheme";
+import useToastTheme from "../../store/UseThemeStore";
 import thumbsUp from "../../assets/lotti-files/thumbs_up.json";
 import AnimationModal from "../../components/utils/AnimationModal";
 import Lottie from "lottie-react";

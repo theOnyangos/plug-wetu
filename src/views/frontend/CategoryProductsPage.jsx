@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { fusionProducts } from "../../data/StaticData.mjs";
+import { fusionProducts } from "../../data/StaticData.js";
 import CategoryProducts from "../../components/products/CategoryProducts";
 import ThemeChanger from "../../components/ThemeChanger";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import Navigation from "../../components/utils/Navigation";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import BottomNavBar from "../../components/utils/BottomNavBar";
 import Footer from "../../components/utils/Footer";
 

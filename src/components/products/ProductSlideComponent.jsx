@@ -1,5 +1,5 @@
 import React from "react";
-import { fusionProducts } from "../../data/StaticData.mjs";
+import { fusionProducts } from "../../data/StaticData.js";
 import { BiSolidStar, BiSolidStarHalf, BiStar } from "react-icons/bi";
 import RecentlyViewedProductSkeleton from "./RecentlyViewedProductSkeleton";
 import { useNavigate } from "react-router-dom";

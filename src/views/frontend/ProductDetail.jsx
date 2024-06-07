@@ -21,7 +21,7 @@ import {
 import { motion } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import useToastTheme from "../../hooks/useToastTheme";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import { useCart } from "../../store/useCart";
 import { reviews } from "../../data/StaticData";

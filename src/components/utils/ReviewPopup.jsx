@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiSolidStar, BiStar, BiX } from "react-icons/bi";
-import useTimeAgo from "../../hooks/useTimeAgo.mjs";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useTimeAgo from "../../hooks/useTimeAgo.js";
+import useScreenSize from "../../hooks/useScreenSize.js";
 
 const ReviewPopup = ({ reviews }) => {
   const [isVisible, setIsVisible] = useState(false);

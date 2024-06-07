@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import Navigation from "../../components/utils/Navigation";
 import { useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ import ThemeChanger from "../../components/ThemeChanger";
 import BottomDrawer from "../../components/utils/BottomDrawer";
 import CreateRating from "../../components/rating/CreateRating";
 import DynamicHelmet from "../../components/DynamicHelmet";
-import { reviews } from "../../data/StaticData.mjs";
+import { reviews } from "../../data/StaticData.js";
 
 const ProductRating = () => {
   const isMobile = useScreenSize();

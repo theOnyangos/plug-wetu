@@ -9,7 +9,7 @@ import {
 } from "react-icons/bi";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import useTimeAgo from "../../hooks/useTimeAgo.mjs";
+import useTimeAgo from "../../hooks/useTimeAgo.js";
 
 const ReviewsComponent = ({ details, reviews }) => {
   const navigate = useNavigate();

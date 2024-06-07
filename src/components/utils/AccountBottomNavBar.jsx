@@ -1,5 +1,5 @@
 import React from "react";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import BottomDrawer from "./BottomDrawer";
 

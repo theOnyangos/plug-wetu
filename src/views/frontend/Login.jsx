@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DynamicHelmet from "../../components/DynamicHelmet";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";

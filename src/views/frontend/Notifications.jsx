@@ -3,7 +3,7 @@ import Navigation from "../../components/utils/Navigation";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import DynamicHelmet from "../../components/DynamicHelmet";
 import BottomNavBar from "../../components/utils/BottomNavBar";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize.js";
 import { useLocation } from "react-router-dom";
 
 const Notifications = () => {

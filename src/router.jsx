@@ -12,7 +12,7 @@ import {
   Notifications,
   ProductRating,
   CategoryProductsPage,
-} from "./views/frontend/index.mjs";
+} from "./views/frontend";
 import { Dashboard as AdminDashboard } from "./views/admin";
 import {
   Accounts,

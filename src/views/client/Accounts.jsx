@@ -3,7 +3,7 @@ import DynamicHelmet from "../../components/DynamicHelmet";
 import MobileDetailsNavigation from "../../components/utils/MobileDetailsNavigation";
 import Navigation from "../../components/utils/Navigation";
 import BottomNavBar from "../../components/utils/BottomNavBar";
-import useScreenSize from "../../hooks/useScreenSize.mjs";
+import useScreenSize from "../../hooks/useScreenSize";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiLogOut, BiNotification, BiSolidFolder } from "react-icons/bi";
 import ThemeChanger from "../../components/ThemeChanger";
