@@ -93,20 +93,20 @@ const CreateRating = ({ title, image }) => {
         <AnimationModal onClose={toggleShowModel}>
           <div className="text-center">
             <Lottie animationData={thumbsUp} />
-              <h1 className="text-xl text-primary font-semibold dark:text-cyan-500 leading-none mb-3">
-                Thank you for your review!
-              </h1>
-              <p className="text-white text-sm dark:text-slate-200 mb-3">
-                Your review has been submitted successfully.
-              </p>
-              {/* Ok Button */}
-              <div className="flex justify-center items-center pb-2 pt-2">
-                <button
-                  onClick={toggleShowModel}
-                  className="btn bg-darken font-bold text-slate-100 px-5 py-3 rounded-md dark:bg-primary dark:text-slate-100 hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
-                >
-                  Ok
-                </button>
+            <h1 className="text-2xl text-primary font-bold dark:text-cyan-500 leading-none mb-3">
+              Amazing 😃
+            </h1>
+            <p className="text-white text-sm dark:text-slate-200 mb-3">
+              Thank you Dennis for feedback. Your review has been submitted
+            </p>
+            {/* Ok Button */}
+            <div className="flex justify-center items-center pb-2 pt-2">
+              <button
+                onClick={toggleShowModel}
+                className="btn bg-darken font-bold text-slate-100 px-5 py-3 rounded-md dark:bg-primary dark:text-slate-100 hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
+              >
+                Ok
+              </button>
             </div>
           </div>
         </AnimationModal>
