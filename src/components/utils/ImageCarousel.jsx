@@ -50,15 +50,15 @@ const CustomNextArrow = ({ onClick }) => (
 );
 
 ImageCarousel.propTypes = {
-  images: PropTypes.array.isRequired,
+  images: PropTypes.array,
 };
 
 CustomPrevArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 CustomNextArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default ImageCarousel;
