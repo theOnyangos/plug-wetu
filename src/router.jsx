@@ -5,24 +5,21 @@ import OpenRoutes from "./layouts/OpenRoutes";
 import ProtectedRoute from "../src/components/ProtectedRoute";
 
 import {
-  Cart,
-  Login,
-  Landing,
-  ProductDetail,
-  Notifications,
-  ProductRating,
-  CategoryProductsPage,
-} from "./views/frontend";
-import { Dashboard as AdminDashboard } from "./views/admin";
-import {
-  Accounts,
-  Dashboard as ClientDashboard,
-  MyBusiness,
-  MyFavorites,
-  Messages,
-} from "./views/client";
-
-import NotFound from "./views/NotFound";
+  CartScreen,
+  HomeScreen,
+  LoginScreen,
+  AccountScreen,
+  MessageScreen,
+  NotFoundScreen,
+  BusinessScreen,
+  FavoritesScreen,
+  DashboardScreen,
+  NotificationScreen,
+  ProductRatingScreen,
+  ProductDetailsScreen,
+  AdminDashboardScreen,
+  CategoryProductsScreen,
+} from "@/views";
 
 const router = createBrowserRouter([
   {
@@ -32,23 +29,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Landing />,
+        element: <HomeScreen />,
       },
-      { path: "/product-details/:slug", element: <ProductDetail /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/product-rating/:productId", element: <ProductRating /> },
-      { path: "/category-products/:slug", element: <CategoryProductsPage /> },
+      { path: "/product-details/:slug", element: <ProductDetailsScreen /> },
+      { path: "/cart", element: <CartScreen /> },
+      { path: "/product-rating/:productId", element: <ProductRatingScreen /> },
+      { path: "/category-products/:slug", element: <CategoryProductsScreen /> },
       {
         path: "/auth-register",
         element: <Navigate to="/auth-login" />,
       },
       {
         path: "/notification",
-        element: <Notifications />,
+        element: <NotificationScreen />,
       },
       {
         path: "/auth-login",
-        element: <Login />,
+        element: <LoginScreen />,
       },
     ],
   },
@@ -59,23 +56,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user-dashboard",
-        element: <ProtectedRoute element={<ClientDashboard />} />,
+        element: <ProtectedRoute element={<DashboardScreen />} />,
       },
       {
         path: "/account",
-        element: <Accounts />,
+        element: <AccountScreen />,
       },
       {
         path: "/business",
-        element: <MyBusiness />,
+        element: <BusinessScreen />,
       },
       {
         path: "/favorites",
-        element: <MyFavorites />,
+        element: <FavoritesScreen />,
       },
       {
         path: "/messages",
-        element: <Messages />,
+        element: <MessageScreen />,
       },
     ],
   },
@@ -86,14 +83,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin-dashboard",
-        element: <ProtectedRoute element={<AdminDashboard />} />,
+        element: <ProtectedRoute element={<AdminDashboardScreen />} />,
       },
     ],
   },
   {
     // Link to the 404 page
     path: "*",
-    element: <NotFound />,
+    element: <NotFoundScreen />,
   },
 ]);
 

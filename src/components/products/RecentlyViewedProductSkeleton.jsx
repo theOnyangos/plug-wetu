@@ -1,14 +1,10 @@
-import React from "react";
-import { forEach } from "lodash";
-import BlankImage from "../../../public/images/empty-image.png";
-
 const RecentlyViewedProductSkeleton = () => {
   return (
     <div className="min-w-56 md:w-80 bg-white dark:bg-dark rounded-md flex flex-col shadow-lg animate-pulse">
       {/* Product Image */}
       <div className="w-56 rounded-t-md h-[280px] flex justify-center items-center bg-gray-400">
         <img
-          src={BlankImage}
+          src="/images/empty-image.png"
           className="w-[150px] object-cover rounded-t-md"
           alt={"Blank Image"}
         />

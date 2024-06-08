@@ -1,14 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import ReviewPopup from "../components/utils/ReviewPopup";
-import { reviews } from "../data/StaticData";
+import { ReviewPopup } from "@/components";
+import { reviews } from "@/data/StaticData";
+import { ProductDetailsProvider } from "@/context/ProductDetailsContext";
 
 const OpenRoutes = () => {
   return (
-    <div className="">
+    <ProductDetailsProvider>
+      {/* Site Body */}
       <Outlet />
+
+      {/* Review Popup */}
       <ReviewPopup reviews={reviews} />
-    </div>
+    </ProductDetailsProvider>
   );
 };
 

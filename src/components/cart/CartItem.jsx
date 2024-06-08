@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useTruncate from "../../hooks/useTruncate";
 import { useCart } from "../../store/useCart";
 import { BiSolidTrash } from "react-icons/bi";
-import useToastTheme from "../../store/UseThemeStore";
+import useToastTheme from "../../hooks/useToastTheme";
 
 const CartItem = ({ item }) => {
   const { truncateDescription } = useTruncate();

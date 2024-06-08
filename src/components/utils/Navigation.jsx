@@ -92,6 +92,7 @@ const Navigation = () => {
                 <img src={""} alt="" />
               </h3>
             </Link>
+
             {/* Links */}
             <div className="hidden md:flex gap-4">
               <DynamicSearch />
@@ -115,9 +116,9 @@ const Navigation = () => {
             </div>
 
             {/* Action Button */}
-            <Link to="/cart" className="hidden md:flex items-center gap-5">
+            <div className="hidden md:flex items-center gap-5">
               {/* Cart icon */}
-              <div className="relative cursor-pointer">
+              <Link to="/cart" className="relative cursor-pointer">
                 <img
                   src="/images/shopping-bag.jpg"
                   alt="Cart Shopping bag"
@@ -126,7 +127,7 @@ const Navigation = () => {
                 <span className="absolute top-0 right-0 w-5 h-5 rounded-full bg-primary dark:bg-red-600 flex justify-center items-center text-sm text-white">
                   {cartItems.length}
                 </span>
-              </div>
+              </Link>
 
               <Link
                 to="/auth-login"
@@ -136,7 +137,7 @@ const Navigation = () => {
                   Sign Up
                 </p>
               </Link>
-            </Link>
+            </div>
           </div>
         </div>
 
