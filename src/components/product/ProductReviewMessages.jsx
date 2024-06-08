@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ReviewsComponent from "@/components/rating/ReviewsComponent";
 import { useContext } from "react";
 import { ProductDetailsContext } from "@/context/ProductDetailsContext";
@@ -16,6 +17,11 @@ const ProductReviewMessages = () => {
       </div>
     </section>
   );
+};
+
+ProductReviewMessages.propTypes = {
+  reviews: PropTypes.array,
+  productDetails: PropTypes.object,
 };
 
 export default ProductReviewMessages;

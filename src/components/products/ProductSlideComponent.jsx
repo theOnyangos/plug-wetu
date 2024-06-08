@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import { fusionProducts } from "../../data/StaticData.js";
 import { BiSolidStar, BiSolidStarHalf, BiStar } from "react-icons/bi";
 import RecentlyViewedProductSkeleton from "./RecentlyViewedProductSkeleton";
@@ -71,6 +71,10 @@ const ProductSlideComponent = ({ loading }) => {
       )}
     </div>
   );
+};
+
+ProductSlideComponent.propTypes = {
+  loading: PropTypes.bool,
 };
 
 export default ProductSlideComponent;

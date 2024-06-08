@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiArrowBack, BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import useThemeStore from "../../store/UseThemeStore";
@@ -100,6 +101,16 @@ const LoginScreenComponent = ({
       )}
     </>
   );
+};
+
+LoginScreenComponent.propTypes = {
+  isOnboarding: PropTypes.bool.isRequired,
+  onboardingContent: PropTypes.array.isRequired,
+  handleGetStarted: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  handlePrevious: PropTypes.func.isRequired,
+  handleNext: PropTypes.func.isRequired,
+  handleSkip: PropTypes.func.isRequired,
 };
 
 export default LoginScreenComponent;

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { FaCircleArrowRight, FaCircleArrowLeft } from "react-icons/fa6";
-import Modal from "../utils/Modal";
+import { Modal, Image } from "@/components";
 
 const ImageCarousel = ({ productDetails, showModal, toggleModal }) => {
   const [clickedImage, setClickedImage] = useState(null);
@@ -64,12 +65,10 @@ const ImageCarousel = ({ productDetails, showModal, toggleModal }) => {
   );
 };
 
-const Image = ({ images }) => {
-  return (
-    <div className="each-slide-effect">
-      <div style={{ backgroundImage: `url(${images})` }}></div>
-    </div>
-  );
+ImageCarousel.propTypes = {
+  productDetails: PropTypes.object.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default ImageCarousel;

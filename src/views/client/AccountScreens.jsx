@@ -1,6 +1,5 @@
-import React from "react";
 import useScreenSize from "@/hooks/useScreenSize";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BiLogOut, BiNotification, BiSolidFolder } from "react-icons/bi";
 import { FaBriefcase, FaUsers, FaUserGear } from "react-icons/fa6";
 import { FaCogs } from "react-icons/fa";
@@ -14,21 +13,21 @@ import {
   AccountBottomNavBar,
   MobileDetailsNavigation,
 } from "@/components";
+import { useState } from "react";
 
 const AccountScreens = () => {
   const isMobile = useScreenSize();
-  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
   const drawerHeight = "100%";
-  const [isFollowersDrawerOpen, setFollowersDrawerOpen] = React.useState(false);
+  const [isFollowersDrawerOpen, setFollowersDrawerOpen] = useState(false);
   const [isAccountSettingsDrawerOpen, setAccountSettingsDrawerOpen] =
-    React.useState(false);
+    useState(false);
   const [isBusinessSettingsDrawerOpen, setBusinessSettingsDrawerOpen] =
-    React.useState(false);
-  const [isOrdersDrawerOpen, setOrdersDrawerOpen] = React.useState(false);
+    useState(false);
+  const [isOrdersDrawerOpen, setOrdersDrawerOpen] = useState(false);
   const [isNotificationsDrawerOpen, setNotificationsDrawerOpen] =
-    React.useState(false);
+    useState(false);
 
   const handleToggleFollowersDrawer = () => {
     setFollowersDrawerOpen(!isFollowersDrawerOpen);

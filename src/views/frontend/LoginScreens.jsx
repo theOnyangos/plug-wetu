@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import useScreenSize from "../../hooks/useScreenSize";
+import { useState } from "react";
 import {
   SignIn,
   SignUp,
@@ -9,7 +8,6 @@ import {
 } from "@/components";
 
 const LoginScreens = () => {
-  const isMobile = useScreenSize();
   const [isSigning, setIsSigning] = useState(false);
   const [isOnboarding, setIsOnboarding] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);

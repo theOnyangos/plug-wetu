@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import useScreenSize from "../../hooks/useScreenSize";
 import { BiSolidPhoneCall } from "react-icons/bi";
 
@@ -33,6 +33,12 @@ const CartButtons = ({ items, cartTotal }) => {
       )}
     </div>
   );
+};
+
+// Add prop types validation
+CartButtons.propTypes = {
+  items: PropTypes.array.isRequired,
+  cartTotal: PropTypes.number.isRequired,
 };
 
 export default CartButtons;

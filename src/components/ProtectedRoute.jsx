@@ -1,11 +1,15 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
-import { useStateContext } from "../context/ContextProvider";
+import PropTypes from "prop-types";
+import useAuthStore from "@/store/useAuthStore";
 
 const ProtectedRoute = ({ element }) => {
-  const { token } = useStateContext();
+  const { token } = useAuthStore();
 
   return token ? element : <Navigate to="/auth-login" />;
+};
+
+ProtectedRoute.propTypes = {
+  element: PropTypes.element.isRequired,
 };
 
 export default ProtectedRoute;

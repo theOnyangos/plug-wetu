@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const SignInComponent = ({ setIsSigning }) => {
@@ -97,6 +98,10 @@ const SignInComponent = ({ setIsSigning }) => {
       </div>
     </section>
   );
+};
+
+SignInComponent.propTypes = {
+  setIsSigning: PropTypes.func.isRequired,
 };
 
 export default SignInComponent;

@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const EmptyRating = ({ classes }) => {
   return (
@@ -16,6 +16,10 @@ const EmptyRating = ({ classes }) => {
       </p>
     </div>
   );
+};
+
+EmptyRating.propTypes = {
+  classes: PropTypes.string,
 };
 
 export default EmptyRating;

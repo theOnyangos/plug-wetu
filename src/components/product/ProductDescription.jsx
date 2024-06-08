@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ProductDescription = ({ productDetails }) => {
   return (
     <section className="md:container md:mx-auto">
@@ -11,6 +13,10 @@ const ProductDescription = ({ productDetails }) => {
       </div>
     </section>
   );
+};
+
+ProductDescription.propTypes = {
+  productDetails: PropTypes.object,
 };
 
 export default ProductDescription;

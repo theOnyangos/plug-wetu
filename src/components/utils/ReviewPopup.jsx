@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiSolidStar, BiStar, BiX } from "react-icons/bi";
-import useTimeAgo from "../../hooks/useTimeAgo.js";
-import useScreenSize from "../../hooks/useScreenSize.js";
+import useTimeAgo from "@/hooks/useTimeAgo.js";
+import useScreenSize from "@/hooks/useScreenSize.js";
 
 const ReviewPopup = ({ reviews }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -138,6 +139,18 @@ const PopupItem = ({ name, message, time, title, rating }) => {
       </div>
     </>
   );
+};
+
+PopupItem.propTypes = {
+  name: PropTypes.string,
+  message: PropTypes.string,
+  time: PropTypes.string,
+  title: PropTypes.string,
+  rating: PropTypes.number,
+};
+
+ReviewPopup.propTypes = {
+  reviews: PropTypes.array,
 };
 
 export default ReviewPopup;

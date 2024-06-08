@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import useThemeStore from "../store/UseThemeStore";
 
@@ -24,7 +24,7 @@ const ThemeChanger = () => {
     },
   ];
 
-  const matchThemeWithSystemPreference = () => {
+  const matchThemeWithSystemPreference = useCallback(() => {
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) && darkQuery.matches)
@@ -33,11 +33,11 @@ const ThemeChanger = () => {
     } else {
       element.classList.remove("dark");
     }
-  };
+  }, [darkQuery, element]);
 
   useEffect(() => {
     matchThemeWithSystemPreference();
-  }, [darkQuery, element]);
+  }, [darkQuery, element, matchThemeWithSystemPreference]);
 
   useEffect(() => {
     switch (theme) {
@@ -56,7 +56,7 @@ const ThemeChanger = () => {
     }
     // Update theme in Zustand store
     setTheme(theme);
-  }, [theme, setTheme, element]);
+  }, [theme, setTheme, element, matchThemeWithSystemPreference]);
 
   const themeSwitchVariants = {
     initial: {

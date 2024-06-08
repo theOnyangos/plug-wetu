@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiCartAdd, BiHeart, BiHome } from "react-icons/bi";
 
 const MobileCartActionButtons = ({ handleAddToCart }) => {
@@ -21,6 +22,10 @@ const MobileCartActionButtons = ({ handleAddToCart }) => {
       </div>
     </div>
   );
+};
+
+MobileCartActionButtons.propTypes = {
+  handleAddToCart: PropTypes.func.isRequired,
 };
 
 export default MobileCartActionButtons;

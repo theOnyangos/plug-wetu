@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import useTimeAgo from "@/hooks/useTimeAgo";
 import { BiSolidStar, BiStar } from "react-icons/bi";
 import { HandleLikeButton, HandleDislikeButton } from "@/components";
@@ -145,6 +146,10 @@ const ReviewItem = ({ review }) => {
       </div>
     </div>
   );
+};
+
+ReviewItem.propTypes = {
+  review: PropTypes.object,
 };
 
 export default ReviewItem;

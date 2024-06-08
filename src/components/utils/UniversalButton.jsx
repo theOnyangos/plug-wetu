@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const UniversalButton = ({ title, handleClick }) => {
   return (
@@ -9,6 +9,11 @@ const UniversalButton = ({ title, handleClick }) => {
       <p className="text-[18px] font-normal tracking-tighter">{title}</p>
     </button>
   );
+};
+
+UniversalButton.propTypes = {
+  title: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default UniversalButton;

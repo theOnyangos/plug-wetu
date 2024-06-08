@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -47,5 +48,17 @@ const CustomNextArrow = ({ onClick }) => (
     <FaChevronRight />
   </button>
 );
+
+ImageCarousel.propTypes = {
+  images: PropTypes.array.isRequired,
+};
+
+CustomPrevArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+CustomNextArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default ImageCarousel;

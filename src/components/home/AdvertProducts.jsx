@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import ProductSlideComponent from "../products/ProductSlideComponent";
 import { useEffect, useState } from "react";
@@ -5,10 +6,6 @@ import { useEffect, useState } from "react";
 const AdvertProducts = ({ title, categorySlug }) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  const toggleShowModel = () => {
-    setShowModel(!showModel);
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,6 +37,11 @@ const AdvertProducts = ({ title, categorySlug }) => {
       <ProductSlideComponent loading={loading} />
     </section>
   );
+};
+
+AdvertProducts.propTypes = {
+  title: PropTypes.string.isRequired,
+  categorySlug: PropTypes.string.isRequired,
 };
 
 export default AdvertProducts;

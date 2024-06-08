@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import useThemeStore from "../../store/UseThemeStore";
@@ -66,6 +67,11 @@ const StarRating = ({ rating, setRating }) => {
       </div>
     </>
   );
+};
+
+StarRating.propTypes = {
+  rating: PropTypes.number,
+  setRating: PropTypes.func,
 };
 
 export default StarRating;

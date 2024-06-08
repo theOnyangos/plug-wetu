@@ -1,5 +1,4 @@
 import useScreenSize from "../../hooks/useScreenSize.js";
-import { useLocation } from "react-router-dom";
 import {
   Navigation,
   BottomNavBar,

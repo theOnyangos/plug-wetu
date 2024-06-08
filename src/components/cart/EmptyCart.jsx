@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const EmptyCart = ({ classes }) => {
   return (
@@ -16,6 +16,10 @@ const EmptyCart = ({ classes }) => {
       </p>
     </div>
   );
+};
+
+EmptyCart.propTypes = {
+  classes: PropTypes.string,
 };
 
 export default EmptyCart;

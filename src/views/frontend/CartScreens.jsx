@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import useScreenSize from "../../hooks/useScreenSize.js";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { useCart, useCartItems } from "../../store/useCart";
 import {
   Navigation,

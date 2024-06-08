@@ -1,7 +1,8 @@
-import React from "react";
-import useScreenSize from "../../hooks/useScreenSize";
+import PropTypes from "prop-types";
+import useScreenSize from "@/hooks/useScreenSize";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import BottomDrawer from "./BottomDrawer";
+import { useState } from "react";
 
 const AccountBottomNavBar = () => {
   const isMobile = useScreenSize();
@@ -9,7 +10,7 @@ const AccountBottomNavBar = () => {
   const pathname = location.pathname;
   const navigate = useNavigate();
   const drawerHeight = "100%";
-  const [isCreateAdDrawerOpen, setCreateAdDrawerOpen] = React.useState(false);
+  const [isCreateAdDrawerOpen, setCreateAdDrawerOpen] = useState(false);
 
   const handleToggleCreateAdDrawer = () => {
     setCreateAdDrawerOpen(!isCreateAdDrawerOpen);
@@ -123,6 +124,17 @@ const AccountBottomNavBar = () => {
       </BottomDrawer>
     </>
   );
+};
+
+AccountBottomNavBar.propTypes = {
+  isMobile: PropTypes.bool,
+  location: PropTypes.object,
+  pathname: PropTypes.string,
+  navigate: PropTypes.func,
+  drawerHeight: PropTypes.string,
+  isCreateAdDrawerOpen: PropTypes.bool,
+  setCreateAdDrawerOpen: PropTypes.func,
+  handleToggleCreateAdDrawer: PropTypes.func,
 };
 
 export default AccountBottomNavBar;

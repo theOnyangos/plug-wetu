@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import BlankImage from "../../../public/images/empty-image.png";
 import { BiHeart } from "react-icons/bi";
 
@@ -34,6 +34,10 @@ const CatalogueProductSkeleton = () => {
       </div>
     </div>
   );
+};
+
+CatalogueProductSkeleton.propTypes = {
+  product: PropTypes.object,
 };
 
 export default CatalogueProductSkeleton;

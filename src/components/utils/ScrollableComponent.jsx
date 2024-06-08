@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 function ScrollableComponent({ children }) {
   useEffect(() => {
@@ -23,5 +24,9 @@ function ScrollableComponent({ children }) {
 
   return <div>{children}</div>;
 }
+
+ScrollableComponent.propTypes = {
+  children: PropTypes.node,
+};
 
 export default ScrollableComponent;

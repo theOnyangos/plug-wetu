@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import {
@@ -42,19 +43,21 @@ const ReviewsComponent = ({ reviews, productDetails }) => {
         <ReviewItem key={index} review={review} />
       ))}
 
+      {/* Loading Indicator */}
+      {loading && <div className="loading-indicator">Loading...</div>}
+
       {/* See all Reviews button */}
       {isReview ? (
         <LoadMoreReviewsButton
           title={loadMoreButtonTitle}
           handleClick={handleLoadMoreReviews}
+          disabled={loading} // Disable button when loading
         />
       ) : (
         <SeeAllReviewsButton
           title={"See all Reviews"}
           handleClick={() => {
-            navigate(`/product-rating/${productDetails.id}`, {
-              state: { productDetails },
-            });
+            navigate(`/product-rating/${productDetails.id}`);
           }}
         />
       )}
@@ -62,6 +65,11 @@ const ReviewsComponent = ({ reviews, productDetails }) => {
       <Toaster />
     </div>
   );
+};
+
+ReviewsComponent.propTypes = {
+  reviews: PropTypes.array,
+  productDetails: PropTypes.object,
 };
 
 export default ReviewsComponent;

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 const NewMessageInput = ({ value, onChange, onSend }) => {
   const input = useRef(null);
@@ -39,6 +40,12 @@ const NewMessageInput = ({ value, onChange, onSend }) => {
       placeholder="Type a message..."
     />
   );
+};
+
+NewMessageInput.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSend: PropTypes.func,
 };
 
 export default NewMessageInput;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { RatingOverview } from "@/components";
 
 const ProductReviewOverview = ({ productDetails }) => {
@@ -19,6 +20,10 @@ const ProductReviewOverview = ({ productDetails }) => {
       </div>
     </section>
   );
+};
+
+ProductReviewOverview.propTypes = {
+  productDetails: PropTypes.object,
 };
 
 export default ProductReviewOverview;

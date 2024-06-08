@@ -1,5 +1,3 @@
-import React from "react";
-
 const useTimeAgo = () => {
   function timeAgo(dateString) {
     const currentDate = new Date();

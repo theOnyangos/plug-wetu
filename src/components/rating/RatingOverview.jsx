@@ -1,7 +1,7 @@
-import React from "react";
+import PropTypes from "prop-types";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { BiSolidStar } from "react-icons/bi";
-import useThemeStore from "../../store/UseThemeStore";
+import useThemeStore from "@/store/UseThemeStore";
 
 const RatingOverview = ({ ratingDistribution }) => {
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -87,6 +87,10 @@ const RatingOverview = ({ ratingDistribution }) => {
       </div>
     </div>
   );
+};
+
+RatingOverview.propTypes = {
+  ratingDistribution: PropTypes.object,
 };
 
 export default RatingOverview;

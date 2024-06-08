@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiChevronRight } from "react-icons/bi";
 
 const ProductBreadcrumb = ({ productDetails }) => {
@@ -12,6 +13,10 @@ const ProductBreadcrumb = ({ productDetails }) => {
       </div>
     </section>
   );
+};
+
+ProductBreadcrumb.propTypes = {
+  productDetails: PropTypes.object,
 };
 
 export default ProductBreadcrumb;

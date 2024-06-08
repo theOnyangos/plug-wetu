@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const RecentlyViewedProductSkeleton = () => {
   return (
     <div className="min-w-56 md:w-80 bg-white dark:bg-dark rounded-md flex flex-col shadow-lg animate-pulse">
@@ -30,6 +32,10 @@ const RecentlyViewedProductSkeleton = () => {
       </div>
     </div>
   );
+};
+
+RecentlyViewedProductSkeleton.propTypes = {
+  product: PropTypes.object,
 };
 
 export default RecentlyViewedProductSkeleton;

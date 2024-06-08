@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import useScreenSize from "@/hooks/useScreenSize";
@@ -29,7 +29,7 @@ const ProductDetailsScreens = () => {
       setCurrentProductDetails(productDetails);
       setLoading(false);
     }
-  }, [productDetails]);
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import CategoriesCarousel from "./CategoriesCarousel";
 import { useMediaQuery } from "react-responsive";
 
@@ -28,7 +28,7 @@ const CategoryScroll = ({ categoryData }) => {
     deviceType = "tablet";
   }
 
-//   console.log(deviceType)
+  //   console.log(deviceType)
 
   return (
     <CategoriesCarousel
@@ -37,6 +37,10 @@ const CategoryScroll = ({ categoryData }) => {
       deviceType={deviceType}
     />
   );
+};
+
+CategoryScroll.propTypes = {
+  categoryData: PropTypes.array.isRequired,
 };
 
 export default CategoryScroll;

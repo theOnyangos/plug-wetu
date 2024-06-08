@@ -1,14 +1,14 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import RightDrawer from "./RightDrawer";
 import { useEffect, useState } from "react";
 import DynamicSearch from "../DynamicSearch";
-import { useCartItems } from "../../store/useCart";
+import { useCartItems } from "@/store/useCart";
 import { motion, useAnimation } from "framer-motion";
-import useThemeStore from "../../store/UseThemeStore";
+import useThemeStore from "@/store/UseThemeStore";
 import { BiHelpCircle, BiCategoryAlt, BiPhoneCall } from "react-icons/bi";
 
 const Navigation = () => {
-  const [darkQuery, setDarkQuery] = useState(false);
   const [isNavOpen, setNavOpen] = useState(false);
   const controls = useAnimation();
   const cartItems = useCartItems();
@@ -20,15 +20,8 @@ const Navigation = () => {
     zIndex: 100,
   };
 
-  const isDarkMode = useThemeStore(
-    (state) =>
-      state.theme === "dark" ||
-      (!("theme" in localStorage) && darkQuery.matches)
-  );
-
   useEffect(() => {
     controls.start("visible");
-    setDarkQuery(window.matchMedia("(prefers-color-scheme: dark)"));
   }, [controls]);
 
   const variants = {
@@ -154,6 +147,10 @@ const Navigation = () => {
       </motion.div>
     </>
   );
+};
+
+Navigation.propTypes = {
+  classes: PropTypes.string,
 };
 
 export default Navigation;

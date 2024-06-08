@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -27,6 +28,12 @@ const CategoriesCarousel = ({ items, responsive, deviceType }) => {
       ))}
     </Carousel>
   );
+};
+
+CategoriesCarousel.propTypes = {
+  items: PropTypes.array.isRequired,
+  responsive: PropTypes.object.isRequired,
+  deviceType: PropTypes.string.isRequired,
 };
 
 export default CategoriesCarousel;

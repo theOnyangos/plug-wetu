@@ -1,13 +1,7 @@
-import { createContext, useState, useContext } from "react";
-
-const StateContext = createContext({
-  currentUser: null,
-  token: null,
-  setUser: () => {},
-  setToken: () => {},
-  updateUser: () => {},
-  logout: () => {},
-});
+// src/context/ContextProvider.jsx
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { StateContext } from "./stateContext";
 
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -49,4 +43,6 @@ export const ContextProvider = ({ children }) => {
   );
 };
 
-export const useStateContext = () => useContext(StateContext);
+ContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

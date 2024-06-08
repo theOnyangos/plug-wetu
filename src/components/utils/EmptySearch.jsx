@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const EmptySearch = ({ classes }) => {
   return (
@@ -16,6 +16,10 @@ const EmptySearch = ({ classes }) => {
       </p>
     </div>
   );
+};
+
+EmptySearch.propTypes = {
+  classes: PropTypes.string,
 };
 
 export default EmptySearch;

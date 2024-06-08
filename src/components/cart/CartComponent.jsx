@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { EmptyCart, CartItem } from "@/components";
 
 const CartComponent = ({ cartTotal, items }) => {
@@ -37,6 +38,11 @@ const CartComponent = ({ cartTotal, items }) => {
       </div>
     </section>
   );
+};
+
+CartComponent.propTypes = {
+  cartTotal: PropTypes.number.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default CartComponent;

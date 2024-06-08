@@ -1,13 +1,17 @@
-import React, { useState, useMemo } from "react";
+import PropTypes from "prop-types";
+import { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import BottomDrawer from "./BottomDrawer";
-import { BiSolidPhoneCall } from "react-icons/bi";
-import { useCartItems, useCart } from "../../store/useCart";
-import CartItem from "../cart/CartItem";
-import EmptyCart from "../cart/EmptyCart";
-import Search from "./Search";
+import { useCartItems, useCart } from "@/store/useCart";
+import {
+  Search,
+  CartItem,
+  EmptyCart,
+  CallButton,
+  BottomDrawer,
+  ViewCartSummaryButton,
+} from "@/components";
 
 const BottomNavBar = () => {
   const location = useLocation();
@@ -46,7 +50,7 @@ const BottomNavBar = () => {
     if (pathSegments.includes("category-products")) {
       setIsCategoryPage(true);
     }
-  }, [cartItems]);
+  }, [cartItems, pathname]); // Added `pathname` to the dependency array
 
   const drawerHeight = "80%";
   const searchDrawerHeight = "100%";
@@ -55,7 +59,8 @@ const BottomNavBar = () => {
     <div>
       {deviceType === "mobile" && (
         <div
-          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800 z-20`}>
+          className={`items-center justify-center bottom-nav-bar bg-white dark:text-slate-300 dark:bg-darken border-t dark:border-slate-800 z-20`}
+        >
           {/* Home Feeds */}
           <Link
             to="/"
@@ -223,26 +228,9 @@ const BottomNavBar = () => {
   );
 };
 
-const ViewCartSummaryButton = ({ title, handleClick }) => {
-  return (
-    <button
-      onClick={handleClick}
-      className="btn font-normal text-white bg-darken dark:bg-primary dark:text-white hover:bg-secondary hover:text-white w-full py-3 flex justify-center items-center rounded-md"
-    >
-      {title}
-    </button>
-  );
-};
-
-const CallButton = ({ handleClick }) => {
-  return (
-    <button
-      onClick={handleClick}
-      className="btn bg-slate-200 text-darken border border-darken dark:bg-slate-100 dark:text-darken hover:bg-slate-400 hover:text-slate-100 p-3 rounded-md"
-    >
-      <BiSolidPhoneCall className="text-2xl" />
-    </button>
-  );
+// Add prop types validation for CallButton
+CallButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default BottomNavBar;

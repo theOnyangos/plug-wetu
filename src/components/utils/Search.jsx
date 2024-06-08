@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import { BiSearchAlt2 } from "react-icons/bi";
 import EmptySearch from "./EmptySearch";
 
@@ -19,6 +19,12 @@ const Search = () => {
       <EmptySearch classes={"h-[450px]"} />
     </div>
   );
+};
+
+Search.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSearch: PropTypes.func,
 };
 
 export default Search;

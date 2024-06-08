@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
 import ImageCarousel from "./ImageCarousel";
 import {
   BiHeart,
@@ -16,15 +16,17 @@ import useToastTheme from "@/hooks/useToastTheme";
 import useScreenSize from "@/hooks/useScreenSize";
 
 const ProductDetailOverview = ({
-  productDetails,
+  quantity,
   showModal,
   toggleModal,
-  handleSelectColor,
-  selectedColor,
+  setQuantity,
   selectedSize,
+  selectedColor,
+  productDetails,
+  handleAddToCart,
   handleSelectSize,
+  handleSelectColor,
 }) => {
-  const [quantity, setQuantity] = useState(1);
   const { showToast } = useToastTheme();
   const isMobile = useScreenSize();
 
@@ -242,6 +244,19 @@ const ProductDetailOverview = ({
       </div>
     </section>
   );
+};
+
+ProductDetailOverview.propTypes = {
+  productDetails: PropTypes.object,
+  showModal: PropTypes.bool,
+  toggleModal: PropTypes.func,
+  handleSelectColor: PropTypes.func,
+  selectedColor: PropTypes.string,
+  selectedSize: PropTypes.string,
+  handleSelectSize: PropTypes.func,
+  quantity: PropTypes.number,
+  setQuantity: PropTypes.func,
+  handleAddToCart: PropTypes.func,
 };
 
 export default ProductDetailOverview;

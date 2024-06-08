@@ -12,9 +12,9 @@ const AppDescription = () => {
           Plug<span className="text-primary">Wetu</span>
         </h3>
         <p className="text-sm md:base dark:text-slate-200">
-          Plug-wetu is an innovative fusion dealer's application designed to
-          streamline the showcasing process for dealers and enhance the shopping
-          experience for clients. <br />
+          Plug-wetu is an innovative fusion dealer&apos;s application designed
+          to streamline the showcasing process for dealers and enhance the
+          shopping experience for clients. <br />
           <br /> Dealers can effortlessly display their extensive catalog of
           fusion wares, presenting them to clients for marketing purposes.
           Through the app, clients gain access to a diverse array of fusion
@@ -22,7 +22,7 @@ const AppDescription = () => {
           decisions about potential purchases. <br />
           <br /> With Plug-wetu, the purchasing journey becomes intuitive and
           seamless, empowering clients to explore options and engage with
-          dealers with ease
+          dealers with ease.
         </p>
       </div>
     </section>

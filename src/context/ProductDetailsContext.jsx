@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
+import { createContext, useState } from "react";
 import {
   reviews as productReviews,
   fusionProducts as products,
@@ -58,4 +59,8 @@ export const ProductDetailsProvider = ({ children }) => {
       {children}
     </ProductDetailsContext.Provider>
   );
+};
+
+ProductDetailsProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

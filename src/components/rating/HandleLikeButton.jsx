@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 
 const HandleLikeButton = ({ isLiked, title, handleClick }) => {
@@ -14,6 +15,12 @@ const HandleLikeButton = ({ isLiked, title, handleClick }) => {
       </button>
     </div>
   );
+};
+
+HandleLikeButton.propTypes = {
+  isLiked: PropTypes.bool.isRequired,
+  title: PropTypes.number,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default HandleLikeButton;

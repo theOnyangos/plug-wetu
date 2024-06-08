@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Navigation,
   CreateRating,
@@ -12,6 +12,7 @@ import {
 import useScreenSize from "@/hooks/useScreenSize";
 import { ProductDetailsContext } from "@/context/ProductDetailsContext.jsx";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ProductRatingScreen = () => {
   const { productDetails, getUrlSlug, getReviews } = useContext(
@@ -36,18 +37,18 @@ const ProductRatingScreen = () => {
     );
   };
 
-  // Check if the productDetails has data
-  if (!isNotEmptyObject(productDetails)) {
-    return window.history.back();
-  }
-
   useEffect(() => {
+    // Check if the productDetails has data
+    if (!isNotEmptyObject(productDetails)) {
+      return window.history.back();
+    }
+
     getReviews(slug);
 
     return () => {
       setReviewIsDrawerOpen(false);
     };
-  }, [getReviews]);
+  }, [getReviews, slug, productDetails]); // Added `slug` to the dependency array
 
   return (
     <div className="pb-20">
@@ -81,7 +82,7 @@ const ProductRatingScreen = () => {
         </div>
       )}
 
-      {/* Ratting Drawer */}
+      {/* Rating Drawer */}
       <BottomDrawer
         isOpen={isReviewDrawerOpen}
         onClose={handleToggleReviewDrawer}
@@ -110,6 +111,11 @@ const AddReviewButton = ({ title, handleClick }) => {
       </button>
     </div>
   );
+};
+
+AddReviewButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default ProductRatingScreen;

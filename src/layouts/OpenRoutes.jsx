@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { ReviewPopup } from "@/components";
 import { reviews } from "@/data/StaticData";

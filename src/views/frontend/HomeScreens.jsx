@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Footer,
   Navigation,
@@ -14,12 +12,6 @@ import {
 } from "@/components";
 
 const HomeScreens = () => {
-  const [showModel, setShowModel] = useState(false);
-
-  const toggleShowModel = () => {
-    setShowModel(!showModel);
-  };
-
   const advertData = [
     {
       title: "Recently Viewed",

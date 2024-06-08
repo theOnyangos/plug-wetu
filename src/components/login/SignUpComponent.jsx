@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const SignUpComponent = ({ setIsSigning }) => {
   return (
@@ -90,6 +90,10 @@ const SignUpComponent = ({ setIsSigning }) => {
       </div>
     </section>
   );
+};
+
+SignUpComponent.propTypes = {
+  setIsSigning: PropTypes.func,
 };
 
 export default SignUpComponent;

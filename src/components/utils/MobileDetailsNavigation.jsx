@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BiCart,
   BiHome,
@@ -48,7 +49,7 @@ const MobileDetailsNavigation = ({ title }) => {
     if (pathSegments.includes("notifications")) {
       setIsNotifications(true);
     }
-  }, [controls]);
+  }, [controls, pathname]);
 
   const variants = {
     hidden: { opacity: 0, y: -100 },
@@ -64,7 +65,7 @@ const MobileDetailsNavigation = ({ title }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <motion.div
         style={navStyle}
         variants={variants}
@@ -182,8 +183,12 @@ const MobileDetailsNavigation = ({ title }) => {
         {/* Action Search */}
         <Search />
       </BottomDrawer>
-    </React.Fragment>
+    </>
   );
+};
+
+MobileDetailsNavigation.propTypes = {
+  title: PropTypes.string,
 };
 
 export default MobileDetailsNavigation;

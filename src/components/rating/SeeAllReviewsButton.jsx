@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const SeeAllReviewsButton = ({ title, handleClick }) => {
   return (
     <div className="flex-1 flex justify-center items-center pb-2 pt-2">
@@ -9,6 +11,11 @@ const SeeAllReviewsButton = ({ title, handleClick }) => {
       </button>
     </div>
   );
+};
+
+SeeAllReviewsButton.propTypes = {
+  title: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default SeeAllReviewsButton;

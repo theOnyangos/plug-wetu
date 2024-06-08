@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
 import useTruncate from "../../hooks/useTruncate";
 import { useCart } from "../../store/useCart";
 import { BiSolidTrash } from "react-icons/bi";
@@ -89,6 +89,10 @@ const CartItem = ({ item }) => {
       </div>
     </div>
   );
+};
+
+CartItem.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default CartItem;

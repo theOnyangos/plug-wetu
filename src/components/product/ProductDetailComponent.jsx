@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
+import { useContext, useState } from "react";
 import {
   ProductBreadcrumb,
   ProductDescription,
@@ -15,6 +16,7 @@ import useScreenSize from "@/hooks/useScreenSize";
 const ProductDetailComponent = () => {
   const { productDetails } = useContext(ProductDetailsContext);
   const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const { showToast } = useToastTheme();
@@ -108,6 +110,9 @@ const ProductDetailComponent = () => {
         selectedColor={selectedColor}
         handleSelectSize={handleSelectSize}
         selectedSize={selectedSize}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        handleAddToCart={handleAddToCart}
       />
 
       {/* Product Description */}
@@ -125,6 +130,10 @@ const ProductDetailComponent = () => {
       )}
     </div>
   );
+};
+
+ProductDetailComponent.propTypes = {
+  productDetails: PropTypes.object,
 };
 
 export default ProductDetailComponent;

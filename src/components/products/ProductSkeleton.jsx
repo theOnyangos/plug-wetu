@@ -1,8 +1,6 @@
-import React from "react";
-import useScreenSize from "../../hooks/useScreenSize.js";
+import PropTypes from "prop-types";
 
 const ProductSkeleton = () => {
-  const isMobile = useScreenSize();
   return (
     <div className="pb-20">
       {/* Breadcrumbs */}
@@ -105,6 +103,10 @@ const ProductSkeleton = () => {
       </div>
     </div>
   );
+};
+
+ProductSkeleton.propTypes = {
+  product: PropTypes.object,
 };
 
 export default ProductSkeleton;

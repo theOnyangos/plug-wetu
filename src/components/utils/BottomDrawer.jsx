@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { BiSolidXCircle } from "react-icons/bi";
@@ -25,5 +25,12 @@ function BottomDrawer({ isOpen, onClose, height, children }) {
     </Drawer>
   );
 }
+
+BottomDrawer.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  height: PropTypes.string,
+  children: PropTypes.node,
+};
 
 export default BottomDrawer;

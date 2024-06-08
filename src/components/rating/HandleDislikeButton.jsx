@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { BiDislike, BiSolidDislike } from "react-icons/bi";
 
 const HandleDislikeButton = ({ isDisLiked, title, handleClick }) => {
@@ -14,6 +15,12 @@ const HandleDislikeButton = ({ isDisLiked, title, handleClick }) => {
       </button>
     </div>
   );
+};
+
+HandleDislikeButton.propTypes = {
+  isDisLiked: PropTypes.bool.isRequired,
+  title: PropTypes.number,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default HandleDislikeButton;

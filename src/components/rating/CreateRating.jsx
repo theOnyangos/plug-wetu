@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import StarRating from "../utils/StarRating";
-import NewMessageInput from "../utils/MessageInput";
-import useToastTheme from "../../store/UseThemeStore";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import thumbsUp from "../../assets/lotti-files/thumbs_up.json";
-import AnimationModal from "../../components/utils/AnimationModal";
+import {
+  StarRating,
+  AnimationModal,
+  NewMessageInput,
+  SubmitReviewButton,
+} from "@/components";
 import Lottie from "lottie-react";
+import useToastTheme from "@/hooks/useToastTheme";
 
 const CreateRating = ({ title, image }) => {
   const [rating, setRating] = useState(null);
   const [newMessage, setNewMessage] = useState("");
-  const [loading, setLoading] = useState(false);
   const { showToast } = useToastTheme();
   const [showModal, setShowModal] = useState(false);
 
@@ -115,18 +118,9 @@ const CreateRating = ({ title, image }) => {
   );
 };
 
-const SubmitReviewButton = ({ title, handleClick }) => {
-  return (
-    <div className="flex-1 flex justify-center items-center pb-2 pt-2">
-      <button
-        type="submit"
-        onClick={handleClick}
-        className="btn bg-darken text-slate-100 px-5 py-3 rounded-md dark:bg-primary dark:text-slate-100 hover:bg-secondary hover:text-white flex items-center gap-2 w-full justify-center"
-      >
-        {title}
-      </button>
-    </div>
-  );
+CreateRating.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default CreateRating;

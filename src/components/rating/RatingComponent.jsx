@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import PropTypes from "prop-types";
 import { ProductDetailsContext } from "@/context/ProductDetailsContext";
 import { RatingOverview } from "@/components";
 
@@ -18,6 +19,10 @@ const RatingComponent = () => {
       </div>
     </section>
   );
+};
+
+RatingComponent.propTypes = {
+  productDetails: PropTypes.object,
 };
 
 export default RatingComponent;

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { CategoryProducts } from "@/components";
-import { fusionProducts } from "../../data/StaticData";
+import { fusionProducts } from "@/data/StaticData";
 
 const CategoryProductsComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,10 @@ const CategoryProductsComponent = () => {
       <CategoryProducts catalogueData={fusionProducts} loading={loading} />
     </section>
   );
+};
+
+CategoryProductsComponent.propTypes = {
+  loading: PropTypes.bool,
 };
 
 export default CategoryProductsComponent;
