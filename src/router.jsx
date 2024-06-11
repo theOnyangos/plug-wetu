@@ -21,77 +21,51 @@ import {
   CategoryProductsScreen,
 } from "@/views";
 
-const router = createBrowserRouter([
+const routes = [
   {
-    // OPEN ROUTES
     path: "/",
     element: <OpenRoutes />,
     children: [
-      {
-        path: "/",
-        element: <HomeScreen />,
-      },
-      { path: "/product-details/:slug", element: <ProductDetailsScreen /> },
-      { path: "/cart", element: <CartScreen /> },
-      { path: "/product-rating/:productId", element: <ProductRatingScreen /> },
-      { path: "/category-products/:slug", element: <CategoryProductsScreen /> },
-      {
-        path: "/auth-register",
-        element: <Navigate to="/auth-login" />,
-      },
-      {
-        path: "/notification",
-        element: <NotificationScreen />,
-      },
-      {
-        path: "/auth-login",
-        element: <LoginScreen />,
-      },
+      { path: "/", element: <HomeScreen /> },
+      { path: "product-details/:slug", element: <ProductDetailsScreen /> },
+      { path: "cart", element: <CartScreen /> },
+      { path: "product-rating/:productId", element: <ProductRatingScreen /> },
+      { path: "category-products/:slug", element: <CategoryProductsScreen /> },
+      { path: "auth-register", element: <Navigate to="/auth-login" /> },
+      { path: "notification", element: <NotificationScreen /> },
+      { path: "auth-login", element: <LoginScreen /> },
     ],
   },
   {
-    // CLIENT ROUTES
     path: "/",
     element: <Admin />,
     children: [
       {
-        path: "/user-dashboard",
+        path: "user-dashboard",
         element: <ProtectedRoute element={<DashboardScreen />} />,
       },
-      {
-        path: "/account",
-        element: <AccountScreen />,
-      },
-      {
-        path: "/business",
-        element: <BusinessScreen />,
-      },
-      {
-        path: "/favorites",
-        element: <FavoritesScreen />,
-      },
-      {
-        path: "/messages",
-        element: <MessageScreen />,
-      },
+      { path: "account", element: <AccountScreen /> },
+      { path: "business", element: <BusinessScreen /> },
+      { path: "favorites", element: <FavoritesScreen /> },
+      { path: "messages", element: <MessageScreen /> },
     ],
   },
   {
-    // ADMIN ROUTES
-    path: "/",
+    path: "/admin-dashboard",
     element: <Admin />,
     children: [
       {
-        path: "/admin-dashboard",
+        path: "",
         element: <ProtectedRoute element={<AdminDashboardScreen />} />,
       },
     ],
   },
   {
-    // Link to the 404 page
     path: "*",
     element: <NotFoundScreen />,
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export default router;

@@ -13,7 +13,7 @@ const WhatsappButton = ({ handleClick }) => {
 };
 
 WhatsappButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
 };
 
 export default WhatsappButton;

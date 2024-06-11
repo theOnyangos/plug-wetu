@@ -13,7 +13,7 @@ const WishlistButton = ({ handleClick }) => {
 };
 
 WishlistButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
 };
 
 export default WishlistButton;

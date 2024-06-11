@@ -13,7 +13,7 @@ const CallButton = ({ handleClick }) => {
 };
 
 CallButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
 };
 
 export default CallButton;

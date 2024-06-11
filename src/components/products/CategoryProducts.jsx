@@ -60,7 +60,7 @@ const CategoryProducts = ({ catalogueData, loading }) => {
                   <WhatsappButton />
 
                   {/* Call Button */}
-                  <CallButton />
+                  <CallButton handleClick={() => {}} />
                 </div>
               </div>
             </div>

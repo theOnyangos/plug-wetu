@@ -1,9 +1,9 @@
 {
-  "name": "plug-wetu-webapplication",
+  "name": "plug",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://localhost:3000",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -20,7 +20,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flickity-component": "^4.0.7",
-    "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.5",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.1.0",

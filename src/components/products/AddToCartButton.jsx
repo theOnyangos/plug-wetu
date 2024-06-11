@@ -13,8 +13,8 @@ const AddToCartButton = ({ title, handleClick }) => {
 };
 
 AddToCartButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  handleClick: PropTypes.func,
+  title: PropTypes.string,
 };
 
 export default AddToCartButton;
